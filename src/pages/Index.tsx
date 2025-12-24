@@ -1,34 +1,40 @@
+import { useState } from 'react';
 import Header from '@/components/Header';
 import HeroBackground from '@/components/HeroBackground';
 import FloatingShapes from '@/components/FloatingShapes';
-import HeroSection from '@/components/HeroSection';
-import PlatformSection from '@/components/PlatformSection';
-import ProgramsSection from '@/components/ProgramsSection';
-import UniversitiesSection from '@/components/UniversitiesSection';
-import LearnersSection from '@/components/LearnersSection';
-import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
+import SlidePage from '@/components/SlidePage';
+import HeroSlide from '@/components/HeroSlide';
+import PlatformSlide from '@/components/PlatformSlide';
+import CoursesSlide from '@/components/CoursesSlide';
+import BenefitsSlide from '@/components/BenefitsSlide';
+import ContactSlide from '@/components/ContactSlide';
 
 const Index = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handleSlideChange = (index: number) => {
+    setCurrentSlide(index);
+  };
+
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen overflow-hidden">
       {/* Background effects */}
       <HeroBackground />
       <FloatingShapes />
       
-      {/* Main content */}
-      <div className="relative z-10">
-        <Header />
-        <main>
-          <HeroSection />
-          <PlatformSection />
-          <ProgramsSection />
-          <UniversitiesSection />
-          <LearnersSection />
-          <ContactSection />
-        </main>
-        <Footer />
-      </div>
+      {/* Header */}
+      <Header currentSlide={currentSlide} onNavigate={handleSlideChange} />
+      
+      {/* Main content - Sliding pages */}
+      <main className="relative z-10 pt-16 lg:pt-20">
+        <SlidePage currentSlide={currentSlide} onSlideChange={handleSlideChange}>
+          <HeroSlide onExplore={() => handleSlideChange(2)} />
+          <PlatformSlide onNext={() => handleSlideChange(2)} />
+          <CoursesSlide onEnroll={() => handleSlideChange(4)} />
+          <BenefitsSlide onContact={() => handleSlideChange(4)} />
+          <ContactSlide />
+        </SlidePage>
+      </main>
     </div>
   );
 };

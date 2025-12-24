@@ -2,23 +2,33 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 
-const Header = () => {
+interface HeaderProps {
+  currentSlide: number;
+  onNavigate: (index: number) => void;
+}
+
+const Header = ({ currentSlide, onNavigate }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { label: 'Platform', href: '#platform' },
-    { label: 'Programs', href: '#programs' },
-    { label: 'Universities', href: '#universities' },
-    { label: 'Learners', href: '#learners' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', index: 0 },
+    { label: 'How It Works', index: 1 },
+    { label: 'Courses', index: 2 },
+    { label: 'Benefits', index: 3 },
+    { label: 'Contact', index: 4 },
   ];
+
+  const handleNav = (index: number) => {
+    onNavigate(index);
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
+          <button onClick={() => onNavigate(0)} className="flex items-center gap-2 group">
             <div className="w-10 h-10 relative">
               <svg viewBox="0 0 100 115" className="w-full h-full">
                 <defs>
@@ -38,28 +48,35 @@ const Header = () => {
             <span className="text-xl font-heading font-bold text-foreground group-hover:text-primary transition-colors">
               POSSIBLE
             </span>
-          </a>
+          </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
-              <a
+              <button
                 key={item.label}
-                href={item.href}
-                className="text-muted-foreground hover:text-primary font-medium transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                onClick={() => handleNav(item.index)}
+                className={`font-medium transition-colors duration-300 relative py-2 ${
+                  currentSlide === item.index 
+                    ? 'text-primary' 
+                    : 'text-muted-foreground hover:text-primary'
+                }`}
               >
                 {item.label}
-              </a>
+                {currentSlide === item.index && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                )}
+              </button>
             ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-4">
             <Button variant="hero-outline" size="sm">
               Login
             </Button>
-            <Button variant="hero" size="sm">
-              Get Started
+            <Button variant="hero" size="sm" onClick={() => onNavigate(2)}>
+              Enroll Now
             </Button>
           </div>
 
@@ -75,23 +92,26 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-border/20 animate-fade-in-up">
-            <nav className="flex flex-col gap-4">
+            <nav className="flex flex-col gap-2">
               {navItems.map((item) => (
-                <a
+                <button
                   key={item.label}
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-muted-foreground hover:text-primary font-medium transition-colors duration-300 py-2"
+                  onClick={() => handleNav(item.index)}
+                  className={`text-left font-medium transition-colors duration-300 py-3 px-2 rounded-lg ${
+                    currentSlide === item.index 
+                      ? 'text-primary bg-primary/10' 
+                      : 'text-muted-foreground hover:text-primary hover:bg-muted/50'
+                  }`}
                 >
                   {item.label}
-                </a>
+                </button>
               ))}
               <div className="flex flex-col gap-3 pt-4 border-t border-border/20">
                 <Button variant="hero-outline" className="w-full">
                   Login
                 </Button>
-                <Button variant="hero" className="w-full">
-                  Get Started
+                <Button variant="hero" className="w-full" onClick={() => handleNav(2)}>
+                  Enroll Now
                 </Button>
               </div>
             </nav>
