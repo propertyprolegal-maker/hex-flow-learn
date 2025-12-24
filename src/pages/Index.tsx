@@ -9,6 +9,7 @@ import CoursesSlide from '@/components/CoursesSlide';
 import WorkshopsSlide from '@/components/WorkshopsSlide';
 import BenefitsSlide from '@/components/BenefitsSlide';
 import ContactSlide from '@/components/ContactSlide';
+import AvatarGuide from '@/components/AvatarGuide';
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -37,6 +38,9 @@ const Index = () => {
           <ContactSlide />
         </SlidePage>
       </main>
+
+      {/* Animated Avatar Guide */}
+      <AvatarGuide />
     </div>
   );
 };
