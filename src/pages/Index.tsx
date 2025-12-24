@@ -30,7 +30,7 @@ const Index = () => {
         <SlidePage currentSlide={currentSlide} onSlideChange={handleSlideChange}>
           <HeroSlide onExplore={() => handleSlideChange(2)} />
           <PlatformSlide onNext={() => handleSlideChange(2)} />
-          <CoursesSlide onEnroll={() => handleSlideChange(4)} />
+          <CoursesSlide />
           <BenefitsSlide onContact={() => handleSlideChange(4)} />
           <ContactSlide />
         </SlidePage>
