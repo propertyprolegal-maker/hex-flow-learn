@@ -6,6 +6,7 @@ import SlidePage from '@/components/SlidePage';
 import HeroSlide from '@/components/HeroSlide';
 import PlatformSlide from '@/components/PlatformSlide';
 import CoursesSlide from '@/components/CoursesSlide';
+import WorkshopsSlide from '@/components/WorkshopsSlide';
 import BenefitsSlide from '@/components/BenefitsSlide';
 import ContactSlide from '@/components/ContactSlide';
 
@@ -31,7 +32,8 @@ const Index = () => {
           <HeroSlide onExplore={() => handleSlideChange(2)} />
           <PlatformSlide onNext={() => handleSlideChange(2)} />
           <CoursesSlide />
-          <BenefitsSlide onContact={() => handleSlideChange(4)} />
+          <WorkshopsSlide />
+          <BenefitsSlide onContact={() => handleSlideChange(5)} />
           <ContactSlide />
         </SlidePage>
       </main>

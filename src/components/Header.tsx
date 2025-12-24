@@ -14,8 +14,9 @@ const Header = ({ currentSlide, onNavigate }: HeaderProps) => {
     { label: 'Home', index: 0 },
     { label: 'How It Works', index: 1 },
     { label: 'Courses', index: 2 },
-    { label: 'Benefits', index: 3 },
-    { label: 'Contact', index: 4 },
+    { label: 'Workshops', index: 3 },
+    { label: 'Benefits', index: 4 },
+    { label: 'Contact', index: 5 },
   ];
 
   const handleNav = (index: number) => {
