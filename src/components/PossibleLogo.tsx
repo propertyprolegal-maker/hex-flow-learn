@@ -197,15 +197,35 @@ const PossibleLogo = ({ className, showTagline = true, size = 'md' }: PossibleLo
           />
         </path>
 
-        {/* Small decorative flourish at the end */}
-        <path
-          d="M 275 42 Q 270 38 268 35"
-          stroke="url(#strokeGradient)"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          fill="none"
-          opacity="0.7"
-        />
+        {/* Flag at the end of signature stroke */}
+        <g transform="translate(268, 38)">
+          {/* Flag pole */}
+          <line
+            x1="0"
+            y1="8"
+            x2="0"
+            y2="-4"
+            stroke="url(#logoGradient)"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+          
+          {/* Waving flag */}
+          <path
+            d="M 0 -4 Q 6 -6 10 -2 Q 14 2 11 5 Q 7 3 3 5 Q 0 6 0 3 Z"
+            fill="url(#flagGradient)"
+            opacity="0.9"
+          >
+            <animate
+              attributeName="d"
+              values="M 0 -4 Q 6 -6 10 -2 Q 14 2 11 5 Q 7 3 3 5 Q 0 6 0 3 Z;
+                      M 0 -4 Q 5 -4 9 0 Q 13 4 10 7 Q 6 5 2 7 Q 0 8 0 3 Z;
+                      M 0 -4 Q 6 -6 10 -2 Q 14 2 11 5 Q 7 3 3 5 Q 0 6 0 3 Z"
+              dur="2.5s"
+              repeatCount="indefinite"
+            />
+          </path>
+        </g>
       </svg>
 
       {/* Tagline */}
