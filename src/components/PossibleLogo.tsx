@@ -198,33 +198,42 @@ const PossibleLogo = ({ className, showTagline = true, size = 'md' }: PossibleLo
         </path>
 
         {/* Flag at the end of signature stroke */}
-        <g transform="translate(268, 38)">
+        <g transform="translate(262, 32)">
           {/* Flag pole */}
           <line
             x1="0"
-            y1="8"
+            y1="14"
             x2="0"
-            y2="-4"
+            y2="-8"
             stroke="url(#logoGradient)"
-            strokeWidth="1.5"
+            strokeWidth="2.5"
             strokeLinecap="round"
           />
           
-          {/* Waving flag */}
+          {/* Waving flag - larger and more prominent */}
           <path
-            d="M 0 -4 Q 6 -6 10 -2 Q 14 2 11 5 Q 7 3 3 5 Q 0 6 0 3 Z"
+            d="M 0 -8 Q 10 -12 18 -4 Q 26 4 20 12 Q 12 8 4 12 Q 0 14 0 6 Z"
             fill="url(#flagGradient)"
-            opacity="0.9"
           >
             <animate
               attributeName="d"
-              values="M 0 -4 Q 6 -6 10 -2 Q 14 2 11 5 Q 7 3 3 5 Q 0 6 0 3 Z;
-                      M 0 -4 Q 5 -4 9 0 Q 13 4 10 7 Q 6 5 2 7 Q 0 8 0 3 Z;
-                      M 0 -4 Q 6 -6 10 -2 Q 14 2 11 5 Q 7 3 3 5 Q 0 6 0 3 Z"
+              values="M 0 -8 Q 10 -12 18 -4 Q 26 4 20 12 Q 12 8 4 12 Q 0 14 0 6 Z;
+                      M 0 -8 Q 8 -8 14 0 Q 22 8 16 14 Q 10 10 2 14 Q 0 16 0 6 Z;
+                      M 0 -8 Q 10 -12 18 -4 Q 26 4 20 12 Q 12 8 4 12 Q 0 14 0 6 Z"
               dur="2.5s"
               repeatCount="indefinite"
             />
           </path>
+          
+          {/* Flag highlight */}
+          <path
+            d="M 2 -6 Q 8 -9 14 -3"
+            stroke="hsl(155, 80%, 70%)"
+            strokeWidth="1"
+            strokeLinecap="round"
+            fill="none"
+            opacity="0.6"
+          />
         </g>
       </svg>
 
