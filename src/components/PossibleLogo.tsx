@@ -129,34 +129,29 @@ const PossibleLogo = ({ className, showTagline = true, size = 'md' }: PossibleLo
             L
           </text>
           
-          {/* Flag waving above L */}
+          {/* Tree growing above L */}
           <g transform="translate(152, 4)">
-            {/* Flag pole extension */}
+            {/* Tree trunk (extending from L) */}
             <line
               x1="4"
               y1="8"
               x2="4"
-              y2="-2"
+              y2="-4"
               stroke="url(#logoGradient)"
               strokeWidth="2.5"
               strokeLinecap="round"
             />
             
-            {/* Waving flag */}
+            {/* Tree foliage - layered triangles */}
             <path
-              d="M 4 -2 Q 12 -4 18 0 Q 24 4 20 8 Q 14 6 8 8 Q 4 9 4 6 Z"
+              d="M 4 -4 L -2 4 L 2 3 L -1 8 L 4 6 L 9 8 L 6 3 L 10 4 Z"
               fill="url(#flagGradient)"
               opacity="0.9"
-            >
-              <animate
-                attributeName="d"
-                values="M 4 -2 Q 12 -4 18 0 Q 24 4 20 8 Q 14 6 8 8 Q 4 9 4 6 Z;
-                        M 4 -2 Q 10 -2 16 2 Q 22 6 18 10 Q 12 8 6 10 Q 4 11 4 6 Z;
-                        M 4 -2 Q 12 -4 18 0 Q 24 4 20 8 Q 14 6 8 8 Q 4 9 4 6 Z"
-                dur="3s"
-                repeatCount="indefinite"
-              />
-            </path>
+            />
+            
+            {/* Small decorative leaves */}
+            <circle cx="1" cy="1" r="1.5" fill="hsl(155, 70%, 55%)" opacity="0.7" />
+            <circle cx="7" cy="2" r="1.2" fill="hsl(155, 70%, 60%)" opacity="0.6" />
           </g>
           
           {/* E */}
@@ -197,9 +192,9 @@ const PossibleLogo = ({ className, showTagline = true, size = 'md' }: PossibleLo
           />
         </path>
 
-        {/* Flag at the end of signature stroke */}
+        {/* Flag at the end of signature stroke - synced with stroke */}
         <g transform="translate(262, 32)">
-          {/* Flag pole */}
+          {/* Flag pole - appears first after stroke */}
           <line
             x1="0"
             y1="14"
@@ -208,32 +203,61 @@ const PossibleLogo = ({ className, showTagline = true, size = 'md' }: PossibleLo
             stroke="url(#logoGradient)"
             strokeWidth="2.5"
             strokeLinecap="round"
-          />
+            strokeDasharray="22"
+            strokeDashoffset="22"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              values="22;0"
+              dur="0.4s"
+              begin="1.3s"
+              fill="freeze"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1"
+            />
+          </line>
           
-          {/* Waving flag - larger and more prominent */}
+          {/* Waving flag - appears after pole */}
           <path
             d="M 0 -8 Q 10 -12 18 -4 Q 26 4 20 12 Q 12 8 4 12 Q 0 14 0 6 Z"
             fill="url(#flagGradient)"
+            opacity="0"
           >
+            <animate
+              attributeName="opacity"
+              values="0;1"
+              dur="0.3s"
+              begin="1.7s"
+              fill="freeze"
+            />
             <animate
               attributeName="d"
               values="M 0 -8 Q 10 -12 18 -4 Q 26 4 20 12 Q 12 8 4 12 Q 0 14 0 6 Z;
                       M 0 -8 Q 8 -8 14 0 Q 22 8 16 14 Q 10 10 2 14 Q 0 16 0 6 Z;
                       M 0 -8 Q 10 -12 18 -4 Q 26 4 20 12 Q 12 8 4 12 Q 0 14 0 6 Z"
               dur="2.5s"
+              begin="1.7s"
               repeatCount="indefinite"
             />
           </path>
           
-          {/* Flag highlight */}
+          {/* Flag highlight - appears with flag */}
           <path
             d="M 2 -6 Q 8 -9 14 -3"
             stroke="hsl(155, 80%, 70%)"
             strokeWidth="1"
             strokeLinecap="round"
             fill="none"
-            opacity="0.6"
-          />
+            opacity="0"
+          >
+            <animate
+              attributeName="opacity"
+              values="0;0.6"
+              dur="0.3s"
+              begin="1.7s"
+              fill="freeze"
+            />
+          </path>
         </g>
       </svg>
 
