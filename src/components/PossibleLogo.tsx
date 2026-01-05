@@ -28,24 +28,24 @@ const PossibleLogo = ({ className, showTagline = true, size = 'md' }: PossibleLo
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          {/* Gradient for the main text */}
+          {/* Gradient for the main text - Premium dark theme */}
           <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="hsl(145, 55%, 42%)" />
-            <stop offset="50%" stopColor="hsl(160, 45%, 45%)" />
-            <stop offset="100%" stopColor="hsl(200, 70%, 50%)" />
+            <stop offset="0%" stopColor="hsl(155, 70%, 50%)" />
+            <stop offset="50%" stopColor="hsl(45, 90%, 55%)" />
+            <stop offset="100%" stopColor="hsl(205, 85%, 60%)" />
           </linearGradient>
           
           {/* Gradient for the signature stroke */}
           <linearGradient id="strokeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="hsl(145, 55%, 42%)" stopOpacity="0.3" />
-            <stop offset="50%" stopColor="hsl(160, 45%, 45%)" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="hsl(200, 70%, 50%)" stopOpacity="0.4" />
+            <stop offset="0%" stopColor="hsl(155, 70%, 50%)" stopOpacity="0.4" />
+            <stop offset="50%" stopColor="hsl(45, 90%, 55%)" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="hsl(205, 85%, 60%)" stopOpacity="0.5" />
           </linearGradient>
 
           {/* Flag gradient */}
           <linearGradient id="flagGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(145, 55%, 50%)" />
-            <stop offset="100%" stopColor="hsl(200, 70%, 55%)" />
+            <stop offset="0%" stopColor="hsl(155, 70%, 55%)" />
+            <stop offset="100%" stopColor="hsl(205, 85%, 60%)" />
           </linearGradient>
         </defs>
 
