@@ -5,6 +5,7 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 
 interface Course {
+  id?: string;
   title: string;
   subtitle: string;
   location: string;
@@ -13,6 +14,8 @@ interface Course {
   image: string;
   highlights: string[];
   featured?: boolean;
+  icon?: React.ReactNode;
+  category?: string;
 }
 
 interface CourseDetailModalProps {
@@ -39,133 +42,143 @@ const courseDetails: Record<string, {
   curriculum: { week: string; title: string; topics: string[] }[];
   includes: string[];
 }> = {
+  'saffron': {
+    price: 45000,
+    originalPrice: 60000,
+    currency: '₹',
+    startDate: 'February 15, 2025',
+    curriculum: [
+      { week: 'Week 1-2', title: 'Introduction to Saffron', topics: ['History of Kashmiri Saffron', 'GI Status & Protection', 'Global Market Overview'] },
+      { week: 'Week 3-4', title: 'Cultivation Practices', topics: ['Climate & Soil Requirements', 'Traditional vs Modern Methods', 'Harvesting Techniques'] },
+      { week: 'Week 5-6', title: 'Quality & Grading', topics: ['ISO Standards', 'Quality Testing', 'Adulteration Detection'] },
+      { week: 'Week 7-8', title: 'Business & Marketing', topics: ['Value Chain Analysis', 'Export Procedures', 'Brand Building'] },
+      { week: 'Immersion', title: '2-Week Field Residency', topics: ['Pampore Saffron Fields Visit', 'Farmer Interactions', 'Processing Unit Tour'] },
+    ],
+    includes: ['24 Expert-led Modules', 'Live Q&A Sessions', 'Field Residency in Kashmir', 'Farmer Mentorship', 'Digital Certificate', 'Alumni Network'],
+  },
+  'heritage-business': {
+    price: 48000,
+    originalPrice: 65000,
+    currency: '₹',
+    startDate: 'March 1, 2025',
+    curriculum: [
+      { week: 'Week 1-2', title: 'Heritage Fundamentals', topics: ['Cultural Heritage Concepts', 'Heritage Laws in India', 'UNESCO Frameworks'] },
+      { week: 'Week 3-4', title: 'Business Strategy', topics: ['Heritage Business Models', 'Funding & Grants', 'Stakeholder Management'] },
+      { week: 'Week 5-6', title: 'Cultural Tourism', topics: ['Tourism Product Development', 'Marketing Heritage', 'Sustainable Tourism'] },
+      { week: 'Week 7-8', title: 'Conservation & Management', topics: ['Conservation Techniques', 'Community Engagement', 'Policy Advocacy'] },
+      { week: 'Immersion', title: '2-Week Kashmir Residency', topics: ['Heritage Site Visits', 'Artisan Cluster Tours', 'Business Case Studies'] },
+    ],
+    includes: ['20 Expert Modules', 'Case Study Library', 'Field Residency', 'Business Plan Review', 'Digital Certificate', 'Mentor Network'],
+  },
+  'coorg-honey': {
+    price: 32000,
+    originalPrice: 42000,
+    currency: '₹',
+    startDate: 'February 20, 2025',
+    curriculum: [
+      { week: 'Week 1-2', title: 'Honey Fundamentals', topics: ['Bee Species & Biology', 'Forest Honey Traditions', 'GI Certification'] },
+      { week: 'Week 3-4', title: 'Beekeeping Practices', topics: ['Traditional Methods', 'Modern Apiculture', 'Sustainable Harvesting'] },
+      { week: 'Week 5-6', title: 'Quality & Processing', topics: ['Honey Testing', 'Processing Standards', 'Packaging & Storage'] },
+      { week: 'Week 7-8', title: 'Market & Business', topics: ['Value Addition', 'E-commerce Strategies', 'Export Markets'] },
+      { week: 'Immersion', title: '1-Week Coorg Residency', topics: ['Forest Honey Harvesting', 'Beekeeper Interactions', 'Processing Unit Visit'] },
+    ],
+    includes: ['16 Core Modules', 'Practical Workshops', 'Field Experience', 'Quality Testing Kit', 'Digital Certificate', 'Community Access'],
+  },
+  'coorg-orange': {
+    price: 28000,
+    originalPrice: 38000,
+    currency: '₹',
+    startDate: 'March 10, 2025',
+    curriculum: [
+      { week: 'Week 1-2', title: 'Citrus Heritage', topics: ['History of Coorg Orange', 'GI Protection', 'Unique Characteristics'] },
+      { week: 'Week 3-4', title: 'Cultivation', topics: ['Agro-climatic Requirements', 'Organic Practices', 'Pest Management'] },
+      { week: 'Week 5-6', title: 'Post-Harvest', topics: ['Harvesting Techniques', 'Storage & Logistics', 'Quality Grading'] },
+      { week: 'Week 7-8', title: 'Business Development', topics: ['Supply Chain', 'Brand Building', 'Market Access'] },
+      { week: 'Immersion', title: '1-Week Field Study', topics: ['Orange Orchards Visit', 'Farmer Meetings', 'Market Survey'] },
+    ],
+    includes: ['14 Expert Modules', 'Orchard Visits', 'Field Study', 'Market Analysis Report', 'Digital Certificate', 'Farmer Network'],
+  },
+  'coorg-coffee': {
+    price: 35000,
+    originalPrice: 48000,
+    currency: '₹',
+    startDate: 'February 25, 2025',
+    curriculum: [
+      { week: 'Week 1-2', title: 'Coffee Origins', topics: ['History of Indian Coffee', 'Arabica vs Robusta', 'Coorg Coffee GI'] },
+      { week: 'Week 3-4', title: 'Plantation Management', topics: ['Shade-grown Practices', 'Sustainable Farming', 'Climate Adaptation'] },
+      { week: 'Week 5-6', title: 'Processing', topics: ['Wet & Dry Processing', 'Roasting Profiles', 'Cupping & Grading'] },
+      { week: 'Week 7-8', title: 'Global Markets', topics: ['Export Documentation', 'Specialty Markets', 'Direct Trade'] },
+      { week: 'Immersion', title: '1-Week Plantation Stay', topics: ['Estate Life Experience', 'Processing Units', 'Cupping Sessions'] },
+    ],
+    includes: ['18 Expert Modules', 'Cupping Kit', 'Plantation Residency', 'Export Guide', 'Digital Certificate', 'Industry Network'],
+  },
+  'mysore-rosewood': {
+    price: 38000,
+    originalPrice: 50000,
+    currency: '₹',
+    startDate: 'March 15, 2025',
+    curriculum: [
+      { week: 'Week 1-2', title: 'Inlay Art Heritage', topics: ['History of Mysore Inlay', 'GI Recognition', 'Master Artisans'] },
+      { week: 'Week 3-4', title: 'Materials & Techniques', topics: ['Wood Selection', 'Inlay Materials', 'Design Principles'] },
+      { week: 'Week 5-6', title: 'Craftsmanship', topics: ['Traditional Tools', 'Modern Innovations', 'Quality Standards'] },
+      { week: 'Week 7-8', title: 'Business & Design', topics: ['Contemporary Applications', 'Market Positioning', 'Design Innovation'] },
+      { week: 'Immersion', title: '2-Week Artisan Workshop', topics: ['Master Artisan Training', 'Hands-on Practice', 'Design Project'] },
+    ],
+    includes: ['16 Expert Modules', 'Artisan Mentorship', 'Workshop Residency', 'Design Portfolio', 'Digital Certificate', 'Craft Network'],
+  },
+  'mysore-silk': {
+    price: 42000,
+    originalPrice: 55000,
+    currency: '₹',
+    startDate: 'March 5, 2025',
+    curriculum: [
+      { week: 'Week 1-2', title: 'Silk Heritage', topics: ['Mysore Silk History', 'GI Protection', 'Royal Patronage'] },
+      { week: 'Week 3-4', title: 'Sericulture', topics: ['Silk Production', 'Mulberry Cultivation', 'Cocoon Processing'] },
+      { week: 'Week 5-6', title: 'Weaving Arts', topics: ['Traditional Looms', 'Zari Work', 'Design Patterns'] },
+      { week: 'Week 7-8', title: 'Fashion Industry', topics: ['Contemporary Fashion', 'Marketing Strategies', 'Export Markets'] },
+      { week: 'Immersion', title: '2-Week Weaving Experience', topics: ['Weaver Community Stay', 'Loom Training', 'Fashion Show'] },
+    ],
+    includes: ['20 Expert Modules', 'Weaving Experience', 'Fashion Industry Connect', 'Design Portfolio', 'Digital Certificate', 'Industry Network'],
+  },
+  'jain-mathematics': {
+    price: 25000,
+    originalPrice: 35000,
+    currency: '₹',
+    startDate: 'April 1, 2025',
+    curriculum: [
+      { week: 'Week 1-2', title: 'Jain Philosophy', topics: ['Jain Worldview', 'Mathematical Traditions', 'Ancient Texts'] },
+      { week: 'Week 3-4', title: 'Number Theory', topics: ['Infinity Concepts', 'Combinatorics', 'Geometry'] },
+      { week: 'Week 5-6', title: 'Modern Applications', topics: ['Computer Science Links', 'Algorithm Foundations', 'Contemporary Research'] },
+      { week: 'Field Study', title: 'Delhi Heritage Tour', topics: ['Jain Libraries', 'Temple Architecture', 'Scholar Meetings'] },
+    ],
+    includes: ['12 Expert Modules', 'Rare Manuscript Access', 'Scholar Mentorship', 'Research Paper', 'Digital Certificate', 'Academic Network'],
+  },
+  'health-medical': {
+    price: 52000,
+    originalPrice: 68000,
+    currency: '₹',
+    startDate: 'March 20, 2025',
+    curriculum: [
+      { week: 'Week 1-3', title: 'Traditional Medicine Systems', topics: ['Ayurveda Fundamentals', 'Regional Healing Traditions', 'Medicinal Plants'] },
+      { week: 'Week 4-6', title: 'Documentation & Research', topics: ['Traditional Knowledge Documentation', 'Research Methods', 'IP Protection'] },
+      { week: 'Week 7-9', title: 'Wellness Industry', topics: ['Wellness Tourism', 'Product Development', 'Regulatory Compliance'] },
+      { week: 'Week 10-12', title: 'Business Development', topics: ['Healthcare Entrepreneurship', 'Marketing Strategies', 'Scaling Models'] },
+      { week: 'Practicum', title: 'Multi-location Immersion', topics: ['Ayurvedic Center Visit', 'Herb Gardens', 'Wellness Resort Study'] },
+    ],
+    includes: ['22 Expert Modules', 'Multi-site Practicum', 'Industry Connects', 'Business Plan Support', 'Digital Certificate', 'Healthcare Network'],
+  },
+  // Fallback for old course titles
   'Geographical Indications of Kashmir': {
     price: 45000,
     originalPrice: 60000,
     currency: '₹',
-    startDate: 'January 15, 2025',
+    startDate: 'February 15, 2025',
     curriculum: [
-      {
-        week: 'Week 1-2',
-        title: 'GI Fundamentals',
-        topics: ['GI Concept & Definition', 'TRIPS & International Treaties', 'India\'s GI Act 1999'],
-      },
-      {
-        week: 'Week 3-4',
-        title: 'Kashmir GI Deep Dive',
-        topics: ['Kashmir Saffron', 'Pashmina & Kani Shawl', 'Paper Maché & Walnut Wood'],
-      },
-      {
-        week: 'Week 5-6',
-        title: 'Legal Frameworks',
-        topics: ['Registration Process', 'Rights & Infringement', 'Enforcement Strategies'],
-      },
-      {
-        week: 'Week 7-8',
-        title: 'Branding & Marketing',
-        topics: ['GI Branding Strategies', 'E-Commerce Platforms', 'Digital Marketing for GIs'],
-      },
-      {
-        week: 'Week 9-10',
-        title: 'Policy & Strategy',
-        topics: ['Rural Development', 'National GI Policies', 'Strategic Management'],
-      },
-      {
-        week: 'Week 11-12',
-        title: 'Capstone Project',
-        topics: ['Project Selection', 'Research & Documentation', 'Final Presentation'],
-      },
-      {
-        week: 'Immersion',
-        title: '2-Week Field Residency',
-        topics: ['Saffron Growers Visit', 'Kani Weavers Workshop', 'Artisan Mentorship'],
-      },
+      { week: 'Week 1-2', title: 'GI Fundamentals', topics: ['GI Concept', 'TRIPS Agreement', 'India GI Act'] },
+      { week: 'Week 3-4', title: 'Kashmir GIs', topics: ['Saffron', 'Pashmina', 'Paper Maché'] },
+      { week: 'Immersion', title: '2-Week Residency', topics: ['Field Visits', 'Artisan Meetings', 'Documentation'] },
     ],
-    includes: [
-      '25 Expert-led Video Modules',
-      'Weekly Live Q&A Sessions',
-      'Field Residency in Srinagar',
-      'Artisan Mentorship Program',
-      'Digital Certificate',
-      'Lifetime Community Access',
-    ],
-  },
-  'Sustainable Crafts & Heritage': {
-    price: 35000,
-    originalPrice: 45000,
-    currency: '₹',
-    startDate: 'February 1, 2025',
-    curriculum: [
-      {
-        week: 'Week 1-2',
-        title: 'Heritage Foundations',
-        topics: ['Cultural Heritage Concepts', 'UNESCO Frameworks', 'Indian Heritage Laws'],
-      },
-      {
-        week: 'Week 3-4',
-        title: 'Traditional Craftsmanship',
-        topics: ['Craft Documentation', 'Technique Analysis', 'Material Studies'],
-      },
-      {
-        week: 'Week 5-6',
-        title: 'Sustainability Practices',
-        topics: ['Eco-friendly Materials', 'Sustainable Production', 'Carbon Footprint'],
-      },
-      {
-        week: 'Week 7-8',
-        title: 'Business Models',
-        topics: ['Market Research', 'Pricing Strategies', 'Fair Trade Practices'],
-      },
-      {
-        week: 'Immersion',
-        title: '1-Week Field Experience',
-        topics: ['Artisan Cluster Visit', 'Workshop Participation', 'Documentation Project'],
-      },
-    ],
-    includes: [
-      '18 Expert-led Modules',
-      'Bi-weekly Mentorship Calls',
-      'Field Experience',
-      'Project Portfolio',
-      'Digital Certificate',
-      'Alumni Network Access',
-    ],
-  },
-  'Rural Innovation & Development': {
-    price: 28000,
-    originalPrice: 38000,
-    currency: '₹',
-    startDate: 'March 1, 2025',
-    curriculum: [
-      {
-        week: 'Week 1-2',
-        title: 'Innovation Mapping',
-        topics: ['Grassroots Innovation', 'Need Assessment', 'Opportunity Identification'],
-      },
-      {
-        week: 'Week 3-4',
-        title: 'Community Development',
-        topics: ['Participatory Methods', 'Stakeholder Engagement', 'Capacity Building'],
-      },
-      {
-        week: 'Week 5-6',
-        title: 'Implementation',
-        topics: ['Project Planning', 'Resource Mobilization', 'Impact Measurement'],
-      },
-      {
-        week: 'Field Project',
-        title: 'On-Ground Implementation',
-        topics: ['Community Immersion', 'Project Execution', 'Documentation'],
-      },
-    ],
-    includes: [
-      '12 Core Modules',
-      'Weekly Office Hours',
-      'Field Project Support',
-      'Impact Report Template',
-      'Digital Certificate',
-      'Mentor Network',
-    ],
+    includes: ['25 Modules', 'Field Residency', 'Digital Certificate', 'Alumni Network'],
   },
 };
 
@@ -181,7 +194,7 @@ const CourseDetailModal = ({ course, isOpen, onClose }: CourseDetailModalProps) 
   const [errors, setErrors] = useState<Partial<Record<keyof EnrollmentFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const details = courseDetails[course.title] || courseDetails['Geographical Indications of Kashmir'];
+  const details = courseDetails[course.id || ''] || courseDetails[course.title] || courseDetails['saffron'];
 
   const handleInputChange = (field: keyof EnrollmentFormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
