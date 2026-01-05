@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
+import PossibleLogo from './PossibleLogo';
 
 interface HeaderProps {
   currentSlide: number;
@@ -30,25 +31,7 @@ const Header = ({ currentSlide, onNavigate }: HeaderProps) => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <button onClick={() => onNavigate(0)} className="flex items-center gap-2 group">
-            <div className="w-10 h-10 relative">
-              <svg viewBox="0 0 100 115" className="w-full h-full">
-                <defs>
-                  <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="hsl(175, 84%, 50%)" />
-                    <stop offset="100%" stopColor="hsl(260, 70%, 50%)" />
-                  </linearGradient>
-                </defs>
-                <polygon
-                  points="50,5 92,30 92,85 50,110 8,85 8,30"
-                  fill="url(#logoGradient)"
-                  className="transition-all duration-300 group-hover:opacity-90"
-                />
-                <text x="50" y="65" textAnchor="middle" fill="hsl(220, 25%, 6%)" fontSize="32" fontWeight="bold" fontFamily="Space Grotesk">P</text>
-              </svg>
-            </div>
-            <span className="text-xl font-heading font-bold text-foreground group-hover:text-primary transition-colors">
-              POSSIBLE
-            </span>
+            <PossibleLogo size="sm" showTagline={false} />
           </button>
 
           {/* Desktop Navigation */}
