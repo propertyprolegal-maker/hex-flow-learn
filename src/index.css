@@ -8,82 +8,82 @@
   :root {
     /* Vaastu-inspired color palette */
     /* White/Off-white backgrounds - purity of thought */
-    --background: 60 20% 98%;
+    --background: 0 0% 100%;
     --foreground: 150 30% 15%;
 
-    --card: 60 15% 96%;
+    --card: 0 0% 99%;
     --card-foreground: 150 30% 15%;
 
-    --popover: 60 15% 98%;
+    --popover: 0 0% 100%;
     --popover-foreground: 150 30% 15%;
 
     /* Light Green primary - growth, innovation, creativity */
     --primary: 145 55% 42%;
-    --primary-foreground: 60 20% 98%;
+    --primary-foreground: 0 0% 100%;
     --primary-glow: 145 55% 55%;
 
     /* Light Blue secondary - knowledge */
     --secondary: 200 70% 50%;
-    --secondary-foreground: 60 20% 98%;
+    --secondary-foreground: 0 0% 100%;
     --secondary-glow: 200 70% 65%;
 
     /* Soft green accent */
     --accent: 160 45% 45%;
-    --accent-foreground: 60 20% 98%;
+    --accent-foreground: 0 0% 100%;
 
-    --muted: 150 10% 92%;
+    --muted: 150 10% 94%;
     --muted-foreground: 150 15% 40%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 20% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 150 15% 85%;
-    --input: 150 15% 90%;
+    --border: 150 15% 88%;
+    --input: 150 15% 92%;
     --ring: 145 55% 42%;
 
     --radius: 0.75rem;
 
     /* Custom design tokens - Vaastu themed */
-    --gradient-hero: linear-gradient(135deg, hsl(60 20% 98%) 0%, hsl(150 15% 96%) 50%, hsl(200 20% 96%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(150, 20%, 98%) 50%, hsl(200, 25%, 97%) 100%);
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
     --gradient-glow: linear-gradient(135deg, hsl(var(--primary-glow)) 0%, hsl(var(--secondary-glow)) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(60 15% 98%) 0%, hsl(150 10% 96%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%) 0%, hsl(150, 15%, 98%) 100%);
     --gradient-text: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--secondary)) 100%);
 
-    --shadow-glow: 0 0 60px hsl(var(--primary) / 0.2);
-    --shadow-card: 0 25px 50px -12px hsl(150 20% 20% / 0.1);
-    --shadow-hexagon: 0 10px 40px hsl(var(--primary) / 0.15);
+    --shadow-glow: 0 0 60px hsla(145, 55%, 42%, 0.2);
+    --shadow-card: 0 25px 50px -12px hsla(150, 20%, 20%, 0.1);
+    --shadow-hexagon: 0 10px 40px hsla(145, 55%, 42%, 0.15);
 
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    --sidebar-background: 150 15% 96%;
+    --sidebar-background: 150 15% 97%;
     --sidebar-foreground: 150 30% 15%;
     --sidebar-primary: 145 55% 42%;
-    --sidebar-primary-foreground: 60 20% 98%;
-    --sidebar-accent: 150 10% 92%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 150 10% 94%;
     --sidebar-accent-foreground: 150 30% 15%;
-    --sidebar-border: 150 15% 85%;
+    --sidebar-border: 150 15% 88%;
     --sidebar-ring: 145 55% 42%;
   }
 
   .dark {
     /* Dark mode with Vaastu colors */
     --background: 150 20% 8%;
-    --foreground: 60 20% 98%;
+    --foreground: 0 0% 98%;
 
     --card: 150 15% 12%;
-    --card-foreground: 60 20% 98%;
+    --card-foreground: 0 0% 98%;
 
     --popover: 150 15% 10%;
-    --popover-foreground: 60 20% 98%;
+    --popover-foreground: 0 0% 98%;
 
     --primary: 145 55% 50%;
     --primary-foreground: 150 20% 8%;
     --primary-glow: 145 55% 65%;
 
     --secondary: 200 70% 55%;
-    --secondary-foreground: 60 20% 98%;
+    --secondary-foreground: 0 0% 98%;
     --secondary-glow: 200 70% 70%;
 
     --accent: 160 45% 50%;
@@ -95,14 +95,14 @@
     --border: 150 15% 22%;
     --input: 150 15% 20%;
 
-    --gradient-hero: linear-gradient(135deg, hsl(150 20% 8%) 0%, hsl(150 15% 10%) 50%, hsl(200 15% 10%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(150 15% 12%) 0%, hsl(150 10% 10%) 100%);
-    --shadow-card: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
+    --gradient-hero: linear-gradient(135deg, hsl(150, 20%, 8%) 0%, hsl(150, 15%, 10%) 50%, hsl(200, 15%, 10%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(150, 15%, 12%) 0%, hsl(150, 10%, 10%) 100%);
+    --shadow-card: 0 25px 50px -12px hsla(0, 0%, 0%, 0.5);
 
     --sidebar-background: 150 15% 10%;
-    --sidebar-foreground: 60 20% 98%;
+    --sidebar-foreground: 0 0% 98%;
     --sidebar-accent: 150 15% 18%;
-    --sidebar-accent-foreground: 60 20% 98%;
+    --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 150 15% 22%;
   }
 }
