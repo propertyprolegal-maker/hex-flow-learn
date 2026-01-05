@@ -7,14 +7,14 @@
 @layer base {
   :root {
     /* Vaastu-inspired color palette */
-    /* White/Off-white backgrounds - purity of thought */
-    --background: 0 0% 100%;
+    /* Light Green backgrounds - growth, purity */
+    --background: 145 30% 96%;
     --foreground: 150 30% 15%;
 
-    --card: 0 0% 99%;
+    --card: 145 25% 94%;
     --card-foreground: 150 30% 15%;
 
-    --popover: 0 0% 100%;
+    --popover: 145 30% 96%;
     --popover-foreground: 150 30% 15%;
 
     /* Light Green primary - growth, innovation, creativity */
@@ -44,10 +44,10 @@
     --radius: 0.75rem;
 
     /* Custom design tokens - Vaastu themed */
-    --gradient-hero: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(150, 20%, 98%) 50%, hsl(200, 25%, 97%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(145, 30%, 96%) 0%, hsl(150, 25%, 94%) 50%, hsl(160, 20%, 95%) 100%);
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
     --gradient-glow: linear-gradient(135deg, hsl(var(--primary-glow)) 0%, hsl(var(--secondary-glow)) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%) 0%, hsl(150, 15%, 98%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(145, 25%, 95%) 0%, hsl(150, 20%, 93%) 100%);
     --gradient-text: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--secondary)) 100%);
 
     --shadow-glow: 0 0 60px hsla(145, 55%, 42%, 0.2);
