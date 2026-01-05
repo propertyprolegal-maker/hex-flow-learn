@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MapPin, Clock, Users, ArrowRight, Leaf, Coffee, Citrus, FlaskConical, Palette, ShirtIcon, Calculator, Building2, HeartPulse } from 'lucide-react';
 import { Button } from './ui/button';
-import CourseDetailModal from './CourseDetailModal';
 
 interface Course {
   id: string;
@@ -18,7 +18,7 @@ interface Course {
 }
 
 const CoursesSlide = () => {
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState<string>('all');
 
   const courses: Course[] = [
@@ -187,7 +187,7 @@ const CoursesSlide = () => {
             {filteredCourses.map((course) => (
               <button
                 key={course.id}
-                onClick={() => setSelectedCourse(course)}
+                onClick={() => navigate(`/course/${course.id}`)}
                 className={`group relative glass-card rounded-xl overflow-hidden border transition-all duration-500 hover:-translate-y-1 text-left ${
                   course.featured ? 'border-primary/50 ring-1 ring-primary/20' : 'border-border/30 hover:border-primary/50'
                 }`}
@@ -261,15 +261,6 @@ const CoursesSlide = () => {
           </div>
         </div>
       </section>
-
-      {/* Course Detail Modal */}
-      {selectedCourse && (
-        <CourseDetailModal
-          course={selectedCourse}
-          isOpen={!!selectedCourse}
-          onClose={() => setSelectedCourse(null)}
-        />
-      )}
     </>
   );
 };
