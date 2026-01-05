@@ -1,24 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import PossibleLogo from './PossibleLogo';
 
 interface HeaderProps {
-  currentSlide: number;
   onNavigate: (index: number) => void;
 }
 
-const Header = ({ currentSlide, onNavigate }: HeaderProps) => {
+const Header = ({ onNavigate }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState(0);
 
   const navItems = [
-    { label: 'Home', index: 0 },
-    { label: 'How It Works', index: 1 },
-    { label: 'Courses', index: 2 },
-    { label: 'Workshops', index: 3 },
-    { label: 'Benefits', index: 4 },
-    { label: 'Contact', index: 5 },
+    { label: 'Home', index: 0, id: 'hero' },
+    { label: 'How It Works', index: 1, id: 'platform' },
+    { label: 'Courses', index: 2, id: 'courses' },
+    { label: 'Workshops', index: 3, id: 'workshops' },
+    { label: 'Benefits', index: 4, id: 'benefits' },
+    { label: 'Contact', index: 5, id: 'contact' },
   ];
+
+  // Track active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navItems.map(item => document.getElementById(item.id));
+      const scrollPosition = window.scrollY + 100;
+
+      sections.forEach((section, index) => {
+        if (section) {
+          const offsetTop = section.offsetTop;
+          const height = section.offsetHeight;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
+            setActiveSection(index);
+          }
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNav = (index: number) => {
     onNavigate(index);
@@ -41,13 +62,13 @@ const Header = ({ currentSlide, onNavigate }: HeaderProps) => {
                 key={item.label}
                 onClick={() => handleNav(item.index)}
                 className={`font-medium transition-colors duration-300 relative py-2 ${
-                  currentSlide === item.index 
+                  activeSection === item.index 
                     ? 'text-primary' 
                     : 'text-muted-foreground hover:text-primary'
                 }`}
               >
                 {item.label}
-                {currentSlide === item.index && (
+                {activeSection === item.index && (
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
                 )}
               </button>
@@ -82,7 +103,7 @@ const Header = ({ currentSlide, onNavigate }: HeaderProps) => {
                   key={item.label}
                   onClick={() => handleNav(item.index)}
                   className={`text-left font-medium transition-colors duration-300 py-3 px-2 rounded-lg ${
-                    currentSlide === item.index 
+                    activeSection === item.index 
                       ? 'text-primary bg-primary/10' 
                       : 'text-muted-foreground hover:text-primary hover:bg-muted/50'
                   }`}

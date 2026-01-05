@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import Header from '@/components/Header';
 import HeroBackground from '@/components/HeroBackground';
 import FloatingShapes from '@/components/FloatingShapes';
-import SlidePage from '@/components/SlidePage';
 import HeroSlide from '@/components/HeroSlide';
 import PlatformSlide from '@/components/PlatformSlide';
 import CoursesSlide from '@/components/CoursesSlide';
@@ -11,31 +9,49 @@ import BenefitsSlide from '@/components/BenefitsSlide';
 import ContactSlide from '@/components/ContactSlide';
 
 const Index = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const handleSlideChange = (index: number) => {
-    setCurrentSlide(index);
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
+  const sectionIds = ['hero', 'platform', 'courses', 'workshops', 'benefits', 'contact'];
+
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen">
       {/* Background effects */}
       <HeroBackground />
       <FloatingShapes />
       
       {/* Header */}
-      <Header currentSlide={currentSlide} onNavigate={handleSlideChange} />
+      <Header onNavigate={(index) => scrollToSection(sectionIds[index])} />
       
-      {/* Main content - Sliding pages */}
-      <main className="relative z-10 pt-16 lg:pt-20">
-        <SlidePage currentSlide={currentSlide} onSlideChange={handleSlideChange}>
-          <HeroSlide onExplore={() => handleSlideChange(2)} />
-          <PlatformSlide onNext={() => handleSlideChange(2)} />
+      {/* Main content - Scrolling sections */}
+      <main className="relative z-10">
+        <section id="hero" className="min-h-screen pt-16 lg:pt-20 flex items-center">
+          <HeroSlide onExplore={() => scrollToSection('courses')} />
+        </section>
+        
+        <section id="platform" className="min-h-screen py-20">
+          <PlatformSlide onNext={() => scrollToSection('courses')} />
+        </section>
+        
+        <section id="courses" className="min-h-screen py-20">
           <CoursesSlide />
+        </section>
+        
+        <section id="workshops" className="min-h-screen py-20">
           <WorkshopsSlide />
-          <BenefitsSlide onContact={() => handleSlideChange(5)} />
+        </section>
+        
+        <section id="benefits" className="min-h-screen py-20">
+          <BenefitsSlide onContact={() => scrollToSection('contact')} />
+        </section>
+        
+        <section id="contact" className="min-h-screen py-20">
           <ContactSlide />
-        </SlidePage>
+        </section>
       </main>
     </div>
   );
