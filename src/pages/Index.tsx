@@ -28,28 +28,28 @@ const Index = () => {
       <Header onNavigate={(index) => scrollToSection(sectionIds[index])} />
       
       {/* Main content - Scrolling sections */}
-      <main className="relative z-10">
-        <section id="hero" className="min-h-screen pt-16 lg:pt-20 flex items-center">
+      <main className="relative z-10 pt-16 lg:pt-20">
+        <section id="hero" className="py-12 lg:py-16">
           <HeroSlide onExplore={() => scrollToSection('courses')} />
         </section>
         
-        <section id="platform" className="min-h-screen py-20">
+        <section id="platform" className="py-16 lg:py-20">
           <PlatformSlide onNext={() => scrollToSection('courses')} />
         </section>
         
-        <section id="courses" className="min-h-screen py-20">
+        <section id="courses" className="py-16 lg:py-20">
           <CoursesSlide />
         </section>
         
-        <section id="workshops" className="min-h-screen py-20">
+        <section id="workshops" className="py-16 lg:py-20">
           <WorkshopsSlide />
         </section>
         
-        <section id="benefits" className="min-h-screen py-20">
+        <section id="benefits" className="py-16 lg:py-20">
           <BenefitsSlide onContact={() => scrollToSection('contact')} />
         </section>
         
-        <section id="contact" className="min-h-screen py-20">
+        <section id="contact" className="py-16 lg:py-20">
           <ContactSlide />
         </section>
       </main>
