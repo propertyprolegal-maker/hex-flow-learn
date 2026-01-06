@@ -74,7 +74,7 @@ const ClimbingAnimation = () => {
   const climberPos = getClimberPosition(progress);
 
   return (
-    <div className="relative w-full max-w-xs">
+    <div className="relative w-full max-w-[200px] sm:max-w-xs md:max-w-sm lg:max-w-md">
       <svg 
         viewBox="0 0 400 420" 
         className="w-full h-auto"
