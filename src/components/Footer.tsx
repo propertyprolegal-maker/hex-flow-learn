@@ -1,6 +1,28 @@
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { toast } from 'sonner';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    setIsSubmitting(true);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    toast.success('Thank you for subscribing!');
+    setEmail('');
+    setIsSubmitting(false);
+  };
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
@@ -131,6 +153,44 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* Newsletter Section */}
+        <div className="py-8 mb-8 border-y border-border/30">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <h4 className="font-heading font-semibold text-foreground text-lg mb-2">
+                Subscribe to our newsletter
+              </h4>
+              <p className="text-sm text-muted-foreground max-w-md">
+                Get the latest updates on new courses, workshops, and exclusive learning resources delivered to your inbox.
+              </p>
+            </div>
+            <form onSubmit={handleNewsletterSubmit} className="flex gap-2 w-full md:w-auto">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full md:w-64 bg-background/50 border-border/50 focus:border-primary"
+                disabled={isSubmitting}
+              />
+              <Button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="shrink-0"
+              >
+                {isSubmitting ? (
+                  <span className="animate-pulse">...</span>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4 mr-2" />
+                    Subscribe
+                  </>
+                )}
+              </Button>
+            </form>
           </div>
         </div>
 
