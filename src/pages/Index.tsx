@@ -7,6 +7,7 @@ import CoursesSlide from '@/components/CoursesSlide';
 import WorkshopsSlide from '@/components/WorkshopsSlide';
 import BenefitsSlide from '@/components/BenefitsSlide';
 import ContactSlide from '@/components/ContactSlide';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   const scrollToSection = (id: string) => {
@@ -52,6 +53,8 @@ const Index = () => {
         <section id="contact" className="py-16 lg:py-20">
           <ContactSlide />
         </section>
+        
+        <Footer />
       </main>
     </div>
   );
