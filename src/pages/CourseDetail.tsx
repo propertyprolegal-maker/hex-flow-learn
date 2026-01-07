@@ -147,14 +147,19 @@ const courses: Course[] = [
 const courseDetails: Record<string, {
   price: number;
   originalPrice: number;
+  immersionPrice?: number;
+  immersionOriginalPrice?: number;
   currency: string;
   startDate: string;
   curriculum: { week: string; title: string; topics: string[] }[];
   includes: string[];
+  immersionIncludes?: string[];
 }> = {
   'saffron': {
-    price: 45000,
-    originalPrice: 60000,
+    price: 15000,
+    originalPrice: 20000,
+    immersionPrice: 35000,
+    immersionOriginalPrice: 45000,
     currency: '₹',
     startDate: 'Self-paced (6–8 weeks)',
     curriculum: [
@@ -165,7 +170,8 @@ const courseDetails: Record<string, {
       { week: 'Module 5', title: 'Economics, Markets & Entrepreneurship', topics: ['Saffron value chain: farmer to consumer', 'Domestic & global markets, pricing & exports', 'Branding & value addition in food, cosmetics & wellness', 'Agritourism, digital models & cooperative opportunities'] },
       { week: 'Optional', title: 'Immersive Field Experience – Pampore (1 Day)', topics: ['Visit active saffron fields in Pampore', 'Hands-on harvesting & stigma separation', 'Observe drying, grading & packaging', 'Interact with farmers, scientists & GI experts'] },
     ],
-    includes: ['5 Core Modules + Optional Field Day', 'Video Lectures & Demonstrations', 'Downloadable Cultivation Calendar', 'Quizzes & Assignments', 'Capstone Project', 'Certificate of Completion', 'Optional Field Immersion Certificate'],
+    includes: ['5 Core Modules', 'Video Lectures & Demonstrations', 'Downloadable Cultivation Calendar', 'Quizzes & Assignments', 'Capstone Project', 'Certificate of Completion'],
+    immersionIncludes: ['Everything in Online Course', '1-Day Field Visit to Pampore', 'Hands-on Harvesting Experience', 'Farmer & Expert Interactions', 'Field Immersion Certificate'],
   },
   'heritage-business': {
     price: 48000,
@@ -482,8 +488,12 @@ const CourseDetail = () => {
 
               {/* Pricing sidebar */}
               <div className="space-y-6">
-                <div className="p-6 rounded-xl glass-card bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/30 sticky top-24">
-                  <p className="text-sm text-muted-foreground mb-1">Course Fee</p>
+                {/* Online Course Pricing */}
+                <div className="p-6 rounded-xl glass-card border border-border/30 sticky top-24">
+                  <div className="flex items-center gap-2 mb-3">
+                    <BookOpen className="w-5 h-5 text-primary" />
+                    <p className="text-sm font-semibold text-foreground">Online Course</p>
+                  </div>
                   <div className="flex items-baseline gap-2 mb-2">
                     <span className="text-3xl font-bold text-foreground">
                       {details.currency}{details.price.toLocaleString()}
@@ -496,16 +506,7 @@ const CourseDetail = () => {
                     Save {details.currency}{(details.originalPrice - details.price).toLocaleString()} (Early Bird)
                   </p>
                   
-                  <Button 
-                    className="w-full mb-4" 
-                    size="lg"
-                    onClick={() => setActiveTab('enroll')}
-                  >
-                    Enroll Now
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                  
-                  <div className="pt-4 border-t border-border/30">
+                  <div className="pt-4 border-t border-border/30 mb-4">
                     <p className="text-sm font-medium text-foreground mb-3">What's Included:</p>
                     <ul className="space-y-2">
                       {details.includes.map((item, i) => (
@@ -516,7 +517,65 @@ const CourseDetail = () => {
                       ))}
                     </ul>
                   </div>
+                  
+                  <Button 
+                    className="w-full" 
+                    size="lg"
+                    onClick={() => setActiveTab('enroll')}
+                  >
+                    Enroll Online
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
                 </div>
+
+                {/* Immersion Pricing (if available) */}
+                {details.immersionPrice && (
+                  <div className="p-6 rounded-xl glass-card bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/30">
+                    <div className="flex items-center gap-2 mb-3">
+                      <MapPin className="w-5 h-5 text-secondary" />
+                      <p className="text-sm font-semibold text-foreground">Online + Field Immersion</p>
+                    </div>
+                    <div className="flex items-baseline gap-2 mb-2">
+                      <span className="text-3xl font-bold text-foreground">
+                        {details.currency}{details.immersionPrice.toLocaleString()}
+                      </span>
+                      {details.immersionOriginalPrice && (
+                        <span className="text-lg text-muted-foreground line-through">
+                          {details.currency}{details.immersionOriginalPrice.toLocaleString()}
+                        </span>
+                      )}
+                    </div>
+                    {details.immersionOriginalPrice && (
+                      <p className="text-xs text-secondary font-medium mb-4">
+                        Save {details.currency}{(details.immersionOriginalPrice - details.immersionPrice).toLocaleString()} (Early Bird)
+                      </p>
+                    )}
+                    
+                    {details.immersionIncludes && (
+                      <div className="pt-4 border-t border-border/30 mb-4">
+                        <p className="text-sm font-medium text-foreground mb-3">What's Included:</p>
+                        <ul className="space-y-2">
+                          {details.immersionIncludes.map((item, i) => (
+                            <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <CheckCircle className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    
+                    <Button 
+                      className="w-full" 
+                      size="lg"
+                      variant="secondary"
+                      onClick={() => setActiveTab('enroll')}
+                    >
+                      Enroll with Immersion
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           ) : (
