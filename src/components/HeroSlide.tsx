@@ -44,19 +44,24 @@ const HeroSlide = ({ onExplore }: HeroSlideProps) => {
               </Button>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border/30 animate-fade-in-up-delayed-2">
-              <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl font-heading font-bold text-primary">50K+</div>
-                <div className="text-sm text-muted-foreground">Students</div>
+            {/* Stats - Projections */}
+            <div className="pt-6 border-t border-border/30 animate-fade-in-up-delayed-2">
+              <div className="flex items-center gap-2 mb-3 justify-center lg:justify-start">
+                <span className="text-xs font-medium text-muted-foreground/70 uppercase tracking-wider">Projected Impact</span>
               </div>
-              <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl font-heading font-bold text-secondary">25+</div>
-                <div className="text-sm text-muted-foreground">Courses</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl font-heading font-bold text-accent">15+</div>
-                <div className="text-sm text-muted-foreground">Countries</div>
+              <div className="grid grid-cols-3 gap-6">
+                <div className="text-center lg:text-left">
+                  <div className="text-2xl sm:text-3xl font-heading font-bold text-primary">50K+</div>
+                  <div className="text-sm text-muted-foreground">Students</div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <div className="text-2xl sm:text-3xl font-heading font-bold text-secondary">25+</div>
+                  <div className="text-sm text-muted-foreground">Courses</div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <div className="text-2xl sm:text-3xl font-heading font-bold text-accent">15+</div>
+                  <div className="text-sm text-muted-foreground">Countries</div>
+                </div>
               </div>
             </div>
           </div>
