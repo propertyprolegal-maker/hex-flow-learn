@@ -144,59 +144,27 @@ const PossibleLogo = ({ className, showTagline = true, size = 'md' }: PossibleLo
           </text>
         </g>
 
-        {/* Boat-shaped underline */}
+        {/* Signature-style underline stroke - inspired by the uploaded signature */}
         <path
-          d="M 5 56 
-             Q 20 62 50 60 
-             L 95 58 
-             L 140 60 
-             Q 170 62 200 58 
-             L 195 54 
-             Q 140 50 95 52 
-             Q 50 50 5 56 
-             Z"
-          fill="url(#flagGradient)"
-          opacity="0.8"
+          d="M 5 52 
+             Q 15 48 30 50 
+             C 60 52 90 54 120 51 
+             Q 150 48 180 50 
+             C 200 52 220 48 260 45
+             Q 275 43 280 40"
+          stroke="url(#strokeGradient)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          fill="none"
           className="origin-left"
         >
           <animate
-            attributeName="opacity"
-            values="0;0.8"
-            dur="1s"
+            attributeName="stroke-dasharray"
+            values="0 500;500 0"
+            dur="1.5s"
             fill="freeze"
-          />
-        </path>
-        {/* Boat mast */}
-        <line
-          x1="95"
-          y1="58"
-          x2="95"
-          y2="38"
-          stroke="url(#logoGradient)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          opacity="0"
-        >
-          <animate
-            attributeName="opacity"
-            values="0;1"
-            dur="0.3s"
-            begin="0.8s"
-            fill="freeze"
-          />
-        </line>
-        {/* Sail */}
-        <path
-          d="M 97 40 Q 115 48 97 56"
-          fill="url(#strokeGradient)"
-          opacity="0"
-        >
-          <animate
-            attributeName="opacity"
-            values="0;0.9"
-            dur="0.3s"
-            begin="1s"
-            fill="freeze"
+            calcMode="spline"
+            keySplines="0.4 0 0.2 1"
           />
         </path>
 
