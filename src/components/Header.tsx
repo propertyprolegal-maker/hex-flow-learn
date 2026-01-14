@@ -1,7 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Menu, X, User, LogOut } from 'lucide-react';
 import { Button } from './ui/button';
 import PossibleLogo from './PossibleLogo';
+import { useAuth } from '@/hooks/useAuth';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface HeaderProps {
   onNavigate: (index: number) => void;
@@ -10,6 +19,8 @@ interface HeaderProps {
 const Header = ({ onNavigate }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState(0);
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
 
   const navItems = [
     { label: 'Home', index: 0, id: 'hero' },
@@ -46,6 +57,11 @@ const Header = ({ onNavigate }: HeaderProps) => {
     setIsMenuOpen(false);
   };
 
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/');
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,12 +93,37 @@ const Header = ({ onNavigate }: HeaderProps) => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="hero-outline" size="sm">
-              Login
-            </Button>
-            <Button variant="hero" size="sm" onClick={() => onNavigate(2)}>
-              Enroll Now
-            </Button>
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="gap-2">
+                    <User className="h-4 w-4" />
+                    My Account
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuItem asChild>
+                    <Link to="/dashboard" className="cursor-pointer">
+                      Dashboard
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-destructive">
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Sign Out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <>
+                <Button variant="hero-outline" size="sm" asChild>
+                  <Link to="/auth">Login</Link>
+                </Button>
+                <Button variant="hero" size="sm" onClick={() => onNavigate(2)}>
+                  Enroll Now
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -112,12 +153,26 @@ const Header = ({ onNavigate }: HeaderProps) => {
                 </button>
               ))}
               <div className="flex flex-col gap-3 pt-4 border-t border-border/20">
-                <Button variant="hero-outline" className="w-full">
-                  Login
-                </Button>
-                <Button variant="hero" className="w-full" onClick={() => handleNav(2)}>
-                  Enroll Now
-                </Button>
+                {user ? (
+                  <>
+                    <Button variant="hero-outline" className="w-full" asChild>
+                      <Link to="/dashboard">Dashboard</Link>
+                    </Button>
+                    <Button variant="outline" className="w-full" onClick={handleSignOut}>
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button variant="hero-outline" className="w-full" asChild>
+                      <Link to="/auth">Login</Link>
+                    </Button>
+                    <Button variant="hero" className="w-full" onClick={() => handleNav(2)}>
+                      Enroll Now
+                    </Button>
+                  </>
+                )}
               </div>
             </nav>
           </div>
