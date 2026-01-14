@@ -6,6 +6,33 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+// Rate limiting configuration
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 10; // 10 requests per minute per user
+
+// In-memory store for rate limiting (resets on function cold start)
+const rateLimitStore = new Map<string, { count: number; windowStart: number }>();
+
+function checkRateLimit(userId: string): { allowed: boolean; remaining: number; resetIn: number } {
+  const now = Date.now();
+  const userLimit = rateLimitStore.get(userId);
+
+  if (!userLimit || now - userLimit.windowStart >= RATE_LIMIT_WINDOW_MS) {
+    // New window or first request
+    rateLimitStore.set(userId, { count: 1, windowStart: now });
+    return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - 1, resetIn: RATE_LIMIT_WINDOW_MS };
+  }
+
+  if (userLimit.count >= MAX_REQUESTS_PER_WINDOW) {
+    const resetIn = RATE_LIMIT_WINDOW_MS - (now - userLimit.windowStart);
+    return { allowed: false, remaining: 0, resetIn };
+  }
+
+  userLimit.count++;
+  const resetIn = RATE_LIMIT_WINDOW_MS - (now - userLimit.windowStart);
+  return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - userLimit.count, resetIn };
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -37,8 +64,30 @@ serve(async (req) => {
       );
     }
 
-    const userId = data.claims.sub;
+    const userId = data.claims.sub as string;
     console.log("Authenticated user:", userId);
+
+    // Check rate limit
+    const rateLimit = checkRateLimit(userId);
+    const rateLimitHeaders = {
+      "X-RateLimit-Limit": MAX_REQUESTS_PER_WINDOW.toString(),
+      "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+      "X-RateLimit-Reset": Math.ceil(rateLimit.resetIn / 1000).toString(),
+    };
+
+    if (!rateLimit.allowed) {
+      console.log(`Rate limit exceeded for user: ${userId}`);
+      return new Response(
+        JSON.stringify({ 
+          error: "Rate limit exceeded. Please wait before sending more messages.",
+          retryAfter: Math.ceil(rateLimit.resetIn / 1000)
+        }),
+        { 
+          status: 429, 
+          headers: { ...corsHeaders, ...rateLimitHeaders, "Content-Type": "application/json" } 
+        }
+      );
+    }
 
     const { message } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
@@ -81,13 +130,13 @@ Keep responses concise, helpful, and encouraging. Use a warm, professional tone.
       if (response.status === 429) {
         return new Response(JSON.stringify({ error: "Rate limit exceeded. Please try again in a moment." }), {
           status: 429,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          headers: { ...corsHeaders, ...rateLimitHeaders, "Content-Type": "application/json" },
         });
       }
       if (response.status === 402) {
         return new Response(JSON.stringify({ error: "Service temporarily unavailable." }), {
           status: 402,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          headers: { ...corsHeaders, ...rateLimitHeaders, "Content-Type": "application/json" },
         });
       }
       throw new Error("AI gateway error");
@@ -99,7 +148,7 @@ Keep responses concise, helpful, and encouraging. Use a warm, professional tone.
     console.log("AI response:", reply);
 
     return new Response(JSON.stringify({ reply }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
+      headers: { ...corsHeaders, ...rateLimitHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
     console.error("Avatar chat error:", error);
