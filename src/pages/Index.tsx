@@ -8,7 +8,7 @@ import WorkshopsSlide from '@/components/WorkshopsSlide';
 import BenefitsSlide from '@/components/BenefitsSlide';
 import ContactSlide from '@/components/ContactSlide';
 import Footer from '@/components/Footer';
-
+import AvatarChat from '@/components/AvatarChat';
 const Index = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -56,6 +56,9 @@ const Index = () => {
         
         <Footer />
       </main>
+      
+      {/* Floating Chat Widget */}
+      <AvatarChat />
     </div>
   );
 };
