@@ -2,3 +2,6 @@ project_id = "xzdhqbhtpuvolaqifuws"
 
 [functions.avatar-chat]
 verify_jwt = false
+
+[functions.generate-certificate]
+verify_jwt = false
