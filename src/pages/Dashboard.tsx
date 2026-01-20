@@ -39,9 +39,8 @@ interface Enrollment {
 
 interface Profile {
   id: string;
-  full_name: string;
-  email: string;
-  avatar_url: string;
+  full_name: string | null;
+  avatar_url: string | null;
 }
 
 const Dashboard = () => {

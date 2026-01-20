@@ -12,7 +12,7 @@ const PlatformSection = () => {
     {
       icon: MapPin,
       title: 'On-Location Immersion',
-      duration: '5-15 Days',
+      duration: '1-15 Days',
       description: 'Field visits, real-world context, and hands-on mentoring with artisans.',
       color: 'secondary',
     },
