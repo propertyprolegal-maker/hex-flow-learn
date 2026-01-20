@@ -16,7 +16,7 @@ const PlatformSlide = ({ onNext }: PlatformSlideProps) => {
     {
       icon: MapPin,
       title: 'Field Immersion',
-      duration: '5-15 Days',
+      duration: '1-15 Days',
       description: 'Travel to real locations. Work with artisans, experts, and communities hands-on.',
       color: 'secondary',
     },
