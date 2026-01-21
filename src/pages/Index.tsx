@@ -30,27 +30,27 @@ const Index = () => {
       
       {/* Main content - Scrolling sections */}
       <main className="relative z-10 pt-16 lg:pt-20">
-        <section id="hero" className="py-12 lg:py-16">
+        <section id="hero" className="py-8 lg:py-10">
           <HeroSlide onExplore={() => scrollToSection('courses')} />
         </section>
         
-        <section id="platform" className="py-16 lg:py-20">
+        <section id="platform" className="py-8 lg:py-10">
           <PlatformSlide onNext={() => scrollToSection('courses')} />
         </section>
         
-        <section id="courses" className="py-16 lg:py-20">
+        <section id="courses" className="py-8 lg:py-10">
           <CoursesSlide />
         </section>
         
-        <section id="workshops" className="py-16 lg:py-20">
+        <section id="workshops" className="py-8 lg:py-10">
           <WorkshopsSlide />
         </section>
         
-        <section id="benefits" className="py-16 lg:py-20">
+        <section id="benefits" className="py-8 lg:py-10">
           <BenefitsSlide onContact={() => scrollToSection('contact')} />
         </section>
         
-        <section id="contact" className="py-16 lg:py-20">
+        <section id="contact" className="py-8 lg:py-10">
           <ContactSlide />
         </section>
         
