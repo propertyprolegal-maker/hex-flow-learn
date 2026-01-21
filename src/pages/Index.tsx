@@ -3,13 +3,12 @@ import HeroBackground from '@/components/HeroBackground';
 import FloatingShapes from '@/components/FloatingShapes';
 import HeroSlide from '@/components/HeroSlide';
 import PlatformSlide from '@/components/PlatformSlide';
-import AnchorProgramsSection from '@/components/anchor-programs';
+import CoursesSlide from '@/components/CoursesSlide';
 import WorkshopsSlide from '@/components/WorkshopsSlide';
 import BenefitsSlide from '@/components/BenefitsSlide';
 import ContactSlide from '@/components/ContactSlide';
 import Footer from '@/components/Footer';
 import AvatarChat from '@/components/AvatarChat';
-
 const Index = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -18,7 +17,7 @@ const Index = () => {
     }
   };
 
-  const sectionIds = ['hero', 'platform', 'programs', 'workshops', 'benefits', 'contact'];
+  const sectionIds = ['hero', 'platform', 'courses', 'workshops', 'benefits', 'contact'];
 
   return (
     <div className="relative min-h-screen">
@@ -32,15 +31,15 @@ const Index = () => {
       {/* Main content - Scrolling sections */}
       <main className="relative z-10 pt-16 lg:pt-20">
         <section id="hero" className="py-12 lg:py-16">
-          <HeroSlide onExplore={() => scrollToSection('programs')} />
+          <HeroSlide onExplore={() => scrollToSection('courses')} />
         </section>
         
         <section id="platform" className="py-16 lg:py-20">
-          <PlatformSlide onNext={() => scrollToSection('programs')} />
+          <PlatformSlide onNext={() => scrollToSection('courses')} />
         </section>
         
-        <section id="programs">
-          <AnchorProgramsSection onContact={() => scrollToSection('contact')} />
+        <section id="courses" className="py-16 lg:py-20">
+          <CoursesSlide />
         </section>
         
         <section id="workshops" className="py-16 lg:py-20">
