@@ -8,9 +8,9 @@ interface PossibleLogoProps {
 
 const PossibleLogo = ({ className, showTagline = true, size = 'md' }: PossibleLogoProps) => {
   const sizeClasses = {
-    sm: 'h-8',
-    md: 'h-12',
-    lg: 'h-16',
+    sm: 'h-10',
+    md: 'h-14',
+    lg: 'h-20',
   };
 
   const taglineSizes = {
@@ -22,152 +22,112 @@ const PossibleLogo = ({ className, showTagline = true, size = 'md' }: PossibleLo
   return (
     <div className={cn('flex flex-col', className)}>
       <svg
-        viewBox="0 0 280 70"
+        viewBox="0 0 320 80"
         className={cn(sizeClasses[size], 'w-auto')}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          {/* Gradient for the main text - Premium dark theme */}
-          <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="hsl(155, 70%, 50%)" />
-            <stop offset="50%" stopColor="hsl(45, 90%, 55%)" />
-            <stop offset="100%" stopColor="hsl(205, 85%, 60%)" />
+          {/* Golden outline gradient */}
+          <linearGradient id="goldenOutline" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="hsl(45, 80%, 55%)" />
+            <stop offset="50%" stopColor="hsl(40, 85%, 50%)" />
+            <stop offset="100%" stopColor="hsl(45, 80%, 55%)" />
           </linearGradient>
           
-          {/* Gradient for the signature stroke */}
-          <linearGradient id="strokeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="hsl(155, 70%, 50%)" stopOpacity="0.4" />
-            <stop offset="50%" stopColor="hsl(45, 90%, 55%)" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="hsl(205, 85%, 60%)" stopOpacity="0.5" />
+          {/* Flag gradient - blue to green */}
+          <linearGradient id="flagGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="hsl(195, 70%, 55%)" />
+            <stop offset="100%" stopColor="hsl(155, 60%, 55%)" />
           </linearGradient>
 
-          {/* Flag gradient */}
-          <linearGradient id="flagGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(155, 70%, 55%)" />
-            <stop offset="100%" stopColor="hsl(205, 85%, 60%)" />
+          {/* Flagpole gradient */}
+          <linearGradient id="poleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="hsl(215, 50%, 35%)" />
+            <stop offset="100%" stopColor="hsl(215, 60%, 25%)" />
           </linearGradient>
         </defs>
 
-        {/* Main POSSIBLE text with signature style */}
+        {/* Main POSSIBLE text - white fill with golden stroke */}
+        <text
+          x="10"
+          y="52"
+          fontFamily="'Nunito', 'Poppins', sans-serif"
+          fontSize="46"
+          fontWeight="800"
+          fill="white"
+          stroke="url(#goldenOutline)"
+          strokeWidth="2"
+          letterSpacing="1"
+        >
+          Possib
+        </text>
+
+        {/* Letter 'l' as flagpole */}
         <g>
-          {/* P */}
+          {/* The 'l' base part */}
           <text
-            x="8"
-            y="42"
-            fontFamily="'Space Grotesk', sans-serif"
-            fontSize="38"
-            fontWeight="700"
-            fill="url(#logoGradient)"
-            letterSpacing="-1"
+            x="202"
+            y="52"
+            fontFamily="'Nunito', 'Poppins', sans-serif"
+            fontSize="46"
+            fontWeight="800"
+            fill="white"
+            stroke="url(#goldenOutline)"
+            strokeWidth="2"
           >
-            P
+            l
           </text>
           
-          {/* O */}
-          <text
-            x="32"
-            y="42"
-            fontFamily="'Space Grotesk', sans-serif"
-            fontSize="38"
-            fontWeight="700"
-            fill="url(#logoGradient)"
-            letterSpacing="-1"
-          >
-            O
-          </text>
+          {/* Flagpole extension */}
+          <rect
+            x="208"
+            y="2"
+            width="6"
+            height="22"
+            rx="1"
+            fill="url(#poleGradient)"
+          />
           
-          {/* SS - with infinity-inspired double S connection */}
-          <text
-            x="60"
-            y="42"
-            fontFamily="'Space Grotesk', sans-serif"
-            fontSize="38"
-            fontWeight="700"
-            fill="url(#logoGradient)"
-            letterSpacing="-2"
+          {/* Waving flag */}
+          <path
+            d="M 214 4 
+               Q 232 8 248 4
+               Q 264 0 280 6
+               L 280 26
+               Q 264 20 248 24
+               Q 232 28 214 24
+               Z"
+            fill="url(#flagGradient)"
           >
-            SS
-          </text>
-          
-          {/* I */}
-          <text
-            x="110"
-            y="42"
-            fontFamily="'Space Grotesk', sans-serif"
-            fontSize="38"
-            fontWeight="700"
-            fill="url(#logoGradient)"
-            letterSpacing="-1"
-          >
-            I
-          </text>
-          
-          {/* B */}
-          <text
-            x="124"
-            y="42"
-            fontFamily="'Space Grotesk', sans-serif"
-            fontSize="38"
-            fontWeight="700"
-            fill="url(#logoGradient)"
-            letterSpacing="-1"
-          >
-            B
-          </text>
-          
-          {/* L - The Flagpost */}
-          <text
-            x="152"
-            y="42"
-            fontFamily="'Space Grotesk', sans-serif"
-            fontSize="38"
-            fontWeight="700"
-            fill="url(#logoGradient)"
-            letterSpacing="-1"
-          >
-            L
-          </text>
-          
-          
-          {/* E */}
-          <text
-            x="175"
-            y="42"
-            fontFamily="'Space Grotesk', sans-serif"
-            fontSize="38"
-            fontWeight="700"
-            fill="url(#logoGradient)"
-            letterSpacing="-1"
-          >
-            E
-          </text>
+            <animate
+              attributeName="d"
+              dur="3s"
+              repeatCount="indefinite"
+              values="
+                M 214 4 Q 232 8 248 4 Q 264 0 280 6 L 280 26 Q 264 20 248 24 Q 232 28 214 24 Z;
+                M 214 4 Q 232 2 248 6 Q 264 10 280 4 L 280 24 Q 264 30 248 26 Q 232 22 214 24 Z;
+                M 214 4 Q 232 8 248 4 Q 264 0 280 6 L 280 26 Q 264 20 248 24 Q 232 28 214 24 Z
+              "
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"
+            />
+          </path>
         </g>
 
-        {/* Signature-style underline stroke - inspired by the uploaded signature */}
-        <path
-          d="M 5 52 
-             Q 15 48 30 50 
-             C 60 52 90 54 120 51 
-             Q 150 48 180 50 
-             C 200 52 220 48 260 45
-             Q 275 43 280 40"
-          stroke="url(#strokeGradient)"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          fill="none"
-          className="origin-left"
+        {/* Letter 'e' */}
+        <text
+          x="222"
+          y="52"
+          fontFamily="'Nunito', 'Poppins', sans-serif"
+          fontSize="46"
+          fontWeight="800"
+          fill="white"
+          stroke="url(#goldenOutline)"
+          strokeWidth="2"
         >
-          <animate
-            attributeName="stroke-dasharray"
-            values="0 500;500 0"
-            dur="1.5s"
-            fill="freeze"
-            calcMode="spline"
-            keySplines="0.4 0 0.2 1"
-          />
-        </path>
-
+          e
+        </text>
       </svg>
 
       {/* Tagline */}
@@ -175,7 +135,7 @@ const PossibleLogo = ({ className, showTagline = true, size = 'md' }: PossibleLo
         <span 
           className={cn(
             taglineSizes[size],
-            'font-medium tracking-[0.2em] uppercase text-muted-foreground mt-0.5 ml-1'
+            'font-medium tracking-[0.15em] uppercase text-muted-foreground mt-0.5 ml-1'
           )}
         >
           Immersive Learning Platform
