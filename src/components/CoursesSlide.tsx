@@ -1,44 +1,45 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MapPin, Clock, ArrowRight, GraduationCap, Building2, Anchor, Wrench } from 'lucide-react';
-import { schoolCourses } from '@/data/schoolCourses';
-import { universityCourses } from '@/data/universityCourses';
-import { anchorCourses } from '@/data/anchorCourses';
-import { workshopCourses } from '@/data/workshopCourses';
+import { ArrowRight, Anchor, Wrench, Building2, GraduationCap } from 'lucide-react';
+
+const categories = [
+  {
+    id: 'anchor-courses',
+    label: 'Anchor Courses',
+    icon: <Anchor className="w-8 h-8" />,
+    description: 'Professional certifications with hands-on immersion experiences across India.',
+    color: 'from-primary to-primary-glow',
+  },
+  {
+    id: 'workshops',
+    label: 'Workshops',
+    icon: <Wrench className="w-8 h-8" />,
+    description: 'Short-term immersive programs combining theory with real-world field work.',
+    color: 'from-secondary to-secondary-glow',
+  },
+  {
+    id: 'universities',
+    label: 'Universities',
+    icon: <Building2 className="w-8 h-8" />,
+    description: 'Specialized courses for university students and faculty development.',
+    color: 'from-accent to-primary',
+  },
+  {
+    id: 'schools',
+    label: 'Schools',
+    icon: <GraduationCap className="w-8 h-8" />,
+    description: 'Experiential learning programs designed for school students and educators.',
+    color: 'from-primary to-secondary',
+  },
+];
 
 const CoursesSlide = () => {
   const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState<string>('schools');
-
-  const categories = [
-    { id: 'schools', label: 'Schools', icon: <GraduationCap className="w-4 h-4" /> },
-    { id: 'universities', label: 'Universities', icon: <Building2 className="w-4 h-4" /> },
-    { id: 'anchor', label: 'Anchor Courses', icon: <Anchor className="w-4 h-4" /> },
-    { id: 'workshops', label: 'Workshops', icon: <Wrench className="w-4 h-4" /> },
-  ];
-
-  const getCourses = () => {
-    switch (activeCategory) {
-      case 'schools':
-        return schoolCourses.map(c => ({ ...c, type: 'school' }));
-      case 'universities':
-        return universityCourses.map(c => ({ ...c, type: 'university' }));
-      case 'anchor':
-        return anchorCourses.map(c => ({ ...c, type: 'anchor' }));
-      case 'workshops':
-        return workshopCourses.map(c => ({ ...c, type: 'workshop' }));
-      default:
-        return [];
-    }
-  };
-
-  const courses = getCourses();
 
   return (
-    <section id="courses" className="relative py-24 px-4 overflow-hidden">
-      <div className="container mx-auto max-w-7xl">
+    <section id="courses" className="relative py-12 px-4 overflow-hidden">
+      <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-secondary/30 mb-4">
             <span className="text-sm font-medium text-secondary">Explore Courses</span>
           </div>
@@ -51,68 +52,38 @@ const CoursesSlide = () => {
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex justify-center gap-2 mb-8 flex-wrap">
+        {/* Category Cards Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {categories.map((category) => (
             <button
               key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                activeCategory === category.id
-                  ? 'bg-primary text-primary-foreground shadow-lg'
-                  : 'bg-muted text-muted-foreground hover:bg-primary/20 hover:text-primary'
-              }`}
+              onClick={() => navigate(`/courses/${category.id}`)}
+              className="group relative glass-card rounded-2xl overflow-hidden border border-border/30 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 text-left p-6"
             >
-              {category.icon}
-              {category.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Courses Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-h-[65vh] overflow-y-auto pr-2">
-          {courses.map((course) => (
-            <button
-              key={course.id}
-              onClick={() => navigate(`/course/${course.id}`)}
-              className="group relative glass-card rounded-xl overflow-hidden border border-border/30 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 text-left"
-            >
-              {/* Content */}
-              <div className="p-5 space-y-3">
-                <div>
-                  <p className="text-xs text-secondary font-medium mb-1">{course.subtitle}</p>
-                  <h3 className="text-sm font-heading font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                    {course.title}
-                  </h3>
+              {/* Gradient Background on Hover */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+              
+              <div className="relative z-10 flex flex-col h-full">
+                {/* Icon */}
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  {category.icon}
                 </div>
 
-                {/* Meta info */}
-                <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
-                  {'level' in course && (
-                    <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">
-                      {course.level}
-                    </span>
-                  )}
-                  {'location' in course && (
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      <span className="truncate max-w-[100px]">{course.location}</span>
-                    </div>
-                  )}
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
-                    <span>{course.duration}</span>
-                  </div>
-                </div>
+                {/* Title */}
+                <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors mb-2">
+                  {category.label}
+                </h3>
 
-                {/* Fee */}
-                <div className="pt-1 flex items-center justify-between">
-                  <span className="text-sm font-semibold text-primary">{course.fee}</span>
-                  <span className="inline-flex items-center gap-1 text-primary font-medium text-xs group-hover:gap-2 transition-all">
-                    View Details
-                    <ArrowRight className="w-3 h-3" />
-                  </span>
-                </div>
+                {/* Description */}
+                <p className="text-sm text-muted-foreground mb-4 flex-grow">
+                  {category.description}
+                </p>
+
+                {/* CTA */}
+                <span className="inline-flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-3 transition-all">
+                  Explore Courses
+                  <ArrowRight className="w-4 h-4" />
+                </span>
               </div>
             </button>
           ))}
