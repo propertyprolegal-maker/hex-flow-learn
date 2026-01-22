@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Instagram, Linkedin, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
@@ -80,6 +80,37 @@ const Footer = () => {
                 <MapPin className="w-4 h-4" />
                 <span className="text-sm">India</span>
               </div>
+            </div>
+            
+            {/* Social Media Links */}
+            <div className="flex items-center gap-4 mt-4">
+              <a 
+                href="https://chat.whatsapp.com/BqPGQmQ4ncvLJGGBaYYQ3B" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
+                aria-label="Join our WhatsApp Community"
+              >
+                <MessageCircle className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.instagram.com/possible.education?igsh=MWx2MGpud2EyYTdwNQ==" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
+                aria-label="Follow us on Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/possible-education-8737933a7/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
+                aria-label="Connect on LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
