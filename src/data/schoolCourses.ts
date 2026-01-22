@@ -60,7 +60,7 @@ export const schoolCourses: Course[] = [
     outcomes: ['Develop curiosity-driven learning habits', 'Overcome fear of making mistakes', 'Ask better questions', 'Express ideas confidently'],
     icon: 'BookOpen',
     category: 'schools',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'seeing-problems-others-ignore',
@@ -86,7 +86,7 @@ export const schoolCourses: Course[] = [
     outcomes: ['Develop keen observation skills', 'Identify problems in everyday situations', 'Build empathy and perspective-taking', 'Communicate issues effectively'],
     icon: 'Eye',
     category: 'schools',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'from-ideas-to-innovations',
@@ -114,7 +114,7 @@ export const schoolCourses: Course[] = [
     outcomes: ['Master design thinking basics', 'Generate and evaluate ideas systematically', 'Build simple prototypes', 'Present innovations confidently'],
     icon: 'Lightbulb',
     category: 'schools',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'who-owns-an-idea',
@@ -140,7 +140,7 @@ export const schoolCourses: Course[] = [
     outcomes: ['Understand intellectual property basics', 'Respect others\' creative work', 'Apply ethical principles to projects', 'Protect original ideas'],
     icon: 'Shield',
     category: 'schools',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'thinking-like-young-entrepreneur',
@@ -167,7 +167,7 @@ export const schoolCourses: Course[] = [
     outcomes: ['Understand value creation principles', 'Develop leadership skills', 'Create compelling pitches', 'Think responsibly about impact'],
     icon: 'Rocket',
     category: 'schools',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'junior-changemaker-lab',
@@ -195,7 +195,7 @@ export const schoolCourses: Course[] = [
     outcomes: ['Solve real-world problems', 'Build working prototypes', 'Understand IP ownership', 'Present like a changemaker'],
     icon: 'Star',
     category: 'schools',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'future-mindset-schools',
@@ -218,6 +218,6 @@ export const schoolCourses: Course[] = [
     outcomes: ['See change as normal and advantageous', 'Start seeing themselves as creators', 'Develop problem-solution thinking'],
     icon: 'Star',
     category: 'schools',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
 ];

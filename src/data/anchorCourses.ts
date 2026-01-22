@@ -79,7 +79,7 @@ export const trackA: AnchorCourse[] = [
     outcomes: ['Define creativity, innovation, and IP', 'Recognize different types of IP', 'Explain basic need for IP', 'Identify examples from local community'],
     icon: 'BookOpen',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'ciip-foundation',
@@ -104,7 +104,7 @@ export const trackA: AnchorCourse[] = [
     outcomes: ['Gain IP awareness', 'Understand basic vocabulary', 'See linkages to discipline'],
     icon: 'Award',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'ciip-applications',
@@ -130,7 +130,7 @@ export const trackA: AnchorCourse[] = [
     outcomes: ['Compare different IP types', 'Apply creativity tools', 'Propose simple IP strategies'],
     icon: 'Link',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'ciip-strategy-ai',
@@ -156,7 +156,7 @@ export const trackA: AnchorCourse[] = [
     outcomes: ['Develop IP strategies', 'Utilize AI-based tools for IP analytics', 'Design business/IP models'],
     icon: 'Cpu',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
     mentoring: '1 Live lecture for 60-75 minutes',
   },
   {
@@ -183,7 +183,7 @@ export const trackA: AnchorCourse[] = [
     outcomes: ['Interpret international IP policies', 'Debate AI authorship issues', 'Lead policy-level discussions'],
     icon: 'Globe',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
     mentoring: '2 Live lectures for 60-75 minutes',
   },
   {
@@ -209,7 +209,7 @@ export const trackA: AnchorCourse[] = [
     outcomes: ['Define prior art importance', 'Apply systematic search strategies', 'Prepare structured search reports'],
     icon: 'Search',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'invention-ip-business',
@@ -234,7 +234,7 @@ export const trackA: AnchorCourse[] = [
     outcomes: ['Connect ideation to disclosure', 'Propose protection strategies', 'Link IP to business valuation'],
     icon: 'Link',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
     mentoring: '1 Live lecture for 60-75 minutes',
   },
   {
@@ -260,7 +260,7 @@ export const trackA: AnchorCourse[] = [
     outcomes: ['Apply lean canvas tool', 'Design compelling pitch decks', 'Demonstrate effective communication'],
     icon: 'Presentation',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
     mentoring: '2 Live lectures for 60-75 minutes',
   },
   {
@@ -287,7 +287,7 @@ export const trackA: AnchorCourse[] = [
     outcomes: ['Identify commercialization potential', 'Develop licensing strategies', 'Design practical commercialization plans'],
     icon: 'Building2',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
     mentoring: '2 Live lectures for 60-75 minutes',
   },
   {
@@ -314,7 +314,7 @@ export const trackA: AnchorCourse[] = [
     outcomes: ['Design IP strategies for startups', 'Mentor early-stage ventures', 'Develop tailored mentoring frameworks'],
     icon: 'Users',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
 ];
 
@@ -344,7 +344,7 @@ export const trackB: AnchorCourse[] = [
     outcomes: ['Ready for junior IP paralegal / KPO roles'],
     icon: 'FileText',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'patent-docketing',
@@ -371,7 +371,7 @@ export const trackB: AnchorCourse[] = [
     outcomes: ['Direct employability in IP law firms & KPOs'],
     icon: 'Database',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'uspto-ids-preparation',
@@ -397,7 +397,7 @@ export const trackB: AnchorCourse[] = [
     outcomes: ['Prepare IDS from real search reports'],
     icon: 'FileCode',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
 ];
 
@@ -428,7 +428,7 @@ export const trackC: AnchorCourse[] = [
     outcomes: ['Draft provisional specifications', 'Understand claim structures', 'Ready for entry-level drafting roles'],
     icon: 'FileText',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
     mentoring: 'One-to-one mentoring',
   },
   {
@@ -455,7 +455,7 @@ export const trackC: AnchorCourse[] = [
     outcomes: ['Ready for independent drafting roles under attorney supervision'],
     icon: 'FileCode',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
     mentoring: 'One-to-one mentoring',
   },
   {
@@ -482,7 +482,7 @@ export const trackC: AnchorCourse[] = [
     outcomes: ['Independently manage prosecution workflows'],
     icon: 'Scale',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
 ];
 
@@ -511,7 +511,7 @@ export const trackD: AnchorCourse[] = [
     outcomes: ['Assist communities, NGOs, and state bodies in GI protection'],
     icon: 'Leaf',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'plant-variety-protection',
@@ -536,7 +536,7 @@ export const trackD: AnchorCourse[] = [
     outcomes: ['File plant variety applications', 'Understand farmers\' rights'],
     icon: 'TreeDeciduous',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'ai-data-emerging-ip',
@@ -560,7 +560,7 @@ export const trackD: AnchorCourse[] = [
     outcomes: ['Navigate AI-generated IP issues', 'Understand data protection'],
     icon: 'Cpu',
     category: 'anchor',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
 ];
 

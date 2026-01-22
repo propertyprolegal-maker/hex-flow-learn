@@ -62,7 +62,7 @@ export const universityCourses: UniversityCourse[] = [
     outcomes: ['Systems and judgment-based thinking', 'Problem framing skills', 'Decision-making under uncertainty'],
     icon: 'Brain',
     category: 'universities',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'innovation-that-works',
@@ -87,7 +87,7 @@ export const universityCourses: UniversityCourse[] = [
     outcomes: ['Human-centered innovation skills', 'Validation and iteration methods', 'Ethical innovation frameworks'],
     icon: 'Lightbulb',
     category: 'universities',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'ideas-to-assets',
@@ -112,7 +112,7 @@ export const universityCourses: UniversityCourse[] = [
     outcomes: ['Understand IP strategy', 'Navigate IP in academic settings', 'Apply ethical IP principles'],
     icon: 'Shield',
     category: 'universities',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'entrepreneurship-beyond-startups',
@@ -137,7 +137,7 @@ export const universityCourses: UniversityCourse[] = [
     outcomes: ['Entrepreneurial mindset', 'Opportunity recognition', 'Business model thinking'],
     icon: 'Rocket',
     category: 'universities',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'ethics-society-innovation',
@@ -160,7 +160,7 @@ export const universityCourses: UniversityCourse[] = [
     outcomes: ['Ethical innovation frameworks', 'Understanding power dynamics', 'Responsible leadership'],
     icon: 'Scale',
     category: 'universities',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'applied-innovation-studio',
@@ -184,7 +184,7 @@ export const universityCourses: UniversityCourse[] = [
     outcomes: ['Real-world problem solving', 'Innovation portfolio', 'IP strategy skills'],
     icon: 'Star',
     category: 'universities',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'ict-engineering',
@@ -207,7 +207,7 @@ export const universityCourses: UniversityCourse[] = [
     outcomes: ['System-level problem analysis', 'Digital solution concept', 'IP + ethics + impact map'],
     icon: 'Cog',
     category: 'universities',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'mechanical-electrical',
@@ -230,7 +230,7 @@ export const universityCourses: UniversityCourse[] = [
     outcomes: ['Real-world system challenge', 'Engineering + IP + sustainability rationale', 'Portfolio documentation'],
     icon: 'Cog',
     category: 'universities',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'medical-pharmacy-biomedical',
@@ -253,7 +253,7 @@ export const universityCourses: UniversityCourse[] = [
     outcomes: ['Healthcare challenge analysis', 'Responsible innovation proposal', 'IP + Ethics Impact Framework'],
     icon: 'Stethoscope',
     category: 'universities',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'law',
@@ -276,7 +276,7 @@ export const universityCourses: UniversityCourse[] = [
     outcomes: ['Policy / IP / justice problem analysis', 'Strategic legal response', 'Ethics and impact reflection'],
     icon: 'Gavel',
     category: 'universities',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'fashion-design-creative',
@@ -299,7 +299,7 @@ export const universityCourses: UniversityCourse[] = [
     outcomes: ['Original creative concept', 'IP narrative', 'Impact documentation'],
     icon: 'Palette',
     category: 'universities',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'other-specialised-branches',
@@ -322,7 +322,7 @@ export const universityCourses: UniversityCourse[] = [
     outcomes: ['Domain-specific innovation', 'Regulatory navigation', 'Impact assessment'],
     icon: 'Building2',
     category: 'universities',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
   {
     id: 'future-mindset-university',
@@ -343,6 +343,6 @@ export const universityCourses: UniversityCourse[] = [
     outcomes: ['See change as normal and advantageous', 'Start seeing themselves as creators', 'Develop problem-solution thinking'],
     icon: 'Star',
     category: 'universities',
-    registrationUrl: '',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=dialog',
   },
 ];
