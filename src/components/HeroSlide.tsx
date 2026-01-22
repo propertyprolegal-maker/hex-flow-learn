@@ -48,7 +48,7 @@ const HeroSlide = ({ onExplore }: HeroSlideProps) => {
             </div>
             <div className="grid grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-heading font-bold text-primary">50K+</div>
+                <div className="text-2xl sm:text-3xl font-heading font-bold text-primary">8000+</div>
                 <div className="text-sm text-muted-foreground">Students</div>
               </div>
               <div className="text-center">
