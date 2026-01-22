@@ -148,7 +148,7 @@ const ContactSlide = () => {
         {/* Footer */}
         <div className="text-center mt-8 pt-6 border-t border-border/20">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} POSSIBLE - Property Pro Legal × Hastin Research. All rights reserved.
+            © {new Date().getFullYear()} POSSIBLE - Hastin Research. All rights reserved.
           </p>
         </div>
       </div>
