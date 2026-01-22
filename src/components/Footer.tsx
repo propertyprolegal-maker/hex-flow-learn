@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
+import PossibleLogo from './PossibleLogo';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -58,25 +59,8 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
-            <a href="#" className="flex items-center gap-2 group mb-4">
-              <div className="w-10 h-10 relative">
-                <svg viewBox="0 0 100 115" className="w-full h-full">
-                  <defs>
-                    <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="hsl(175, 84%, 50%)" />
-                      <stop offset="100%" stopColor="hsl(260, 70%, 50%)" />
-                    </linearGradient>
-                  </defs>
-                  <polygon
-                    points="50,5 92,30 92,85 50,110 8,85 8,30"
-                    fill="url(#footerLogoGradient)"
-                  />
-                  <text x="50" y="65" textAnchor="middle" fill="hsl(220, 25%, 6%)" fontSize="32" fontWeight="bold" fontFamily="Space Grotesk">P</text>
-                </svg>
-              </div>
-              <span className="text-xl font-heading font-bold text-foreground">
-                Possible
-              </span>
+            <a href="#" className="inline-block mb-4">
+              <PossibleLogo size="lg" showTagline={true} />
             </a>
             <p className="text-muted-foreground mb-6 max-w-sm">
               Empowering millions of learners worldwide through immersive education.
