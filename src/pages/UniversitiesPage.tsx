@@ -239,8 +239,7 @@ const UniversitiesPage = () => {
                         </div>
                       </div>
 
-                      <div className="pt-1 flex items-center justify-between">
-                        <span className="text-sm font-semibold text-primary">{course.fee}</span>
+                      <div className="pt-2 flex items-center justify-end">
                         <span className="inline-flex items-center gap-1 text-primary font-medium text-xs group-hover:gap-2 transition-all">
                           View Details
                           <ArrowRight className="w-3 h-3" />
