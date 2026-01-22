@@ -68,7 +68,7 @@ const Header = ({ onNavigate }: HeaderProps) => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <button onClick={() => onNavigate(0)} className="flex items-center gap-2 group">
-            <PossibleLogo size="sm" showTagline={false} />
+            <PossibleLogo size="md" showTagline={false} />
           </button>
 
           {/* Desktop Navigation */}
