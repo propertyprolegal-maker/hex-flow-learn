@@ -58,13 +58,13 @@ const ContactSection = () => {
 
               <div className="flex flex-col gap-4">
                 <a 
-                  href="mailto:Propertyprolegal@gmail.com"
+                  href="mailto:mail@possible.education"
                   className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
                 >
                   <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
-                  <span>Propertyprolegal@gmail.com</span>
+                  <span>mail@possible.education</span>
                 </a>
                 <a 
                   href="tel:+918003966375"
