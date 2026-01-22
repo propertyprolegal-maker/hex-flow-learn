@@ -107,7 +107,7 @@ const WorkshopsSlide = () => {
         {/* Stats Row */}
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { value: "500+", label: "Students Trained" },
+            { value: "8000+", label: "Students Trained" },
             { value: "15+", label: "Workshops Conducted" },
             { value: "10+", label: "Partner Communities" },
             { value: "95%", label: "Satisfaction Rate" }
