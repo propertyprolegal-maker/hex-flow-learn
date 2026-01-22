@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, MapPin, Clock, Calendar, IndianRupee } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin, Clock, Calendar } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroBackground from "@/components/HeroBackground";
@@ -257,9 +257,11 @@ const WorkshopsPage = () => {
                               <Calendar className="w-3 h-3" />
                               {course.startDate}
                             </span>
-                            <span className="flex items-center gap-1">
-                              <IndianRupee className="w-3 h-3" />
-                              {course.fee}
+                          </div>
+                          <div className="pt-2 flex justify-end">
+                            <span className="inline-flex items-center gap-1 text-primary font-medium text-xs group-hover:gap-2 transition-all">
+                              View Details
+                              <ArrowRight className="w-3 h-3" />
                             </span>
                           </div>
                         </div>
