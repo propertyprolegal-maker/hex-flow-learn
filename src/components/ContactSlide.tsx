@@ -37,7 +37,7 @@ const ContactSlide = () => {
             {/* Contact Info */}
             <div className="space-y-4 mb-8">
               <a 
-                href="mailto:Propertyprolegal@gmail.com"
+                href="mailto:mail@possible.education"
                 className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors group"
               >
                 <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
@@ -45,7 +45,7 @@ const ContactSlide = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email us at</p>
-                  <p className="text-foreground font-medium">Propertyprolegal@gmail.com</p>
+                  <p className="text-foreground font-medium">mail@possible.education</p>
                 </div>
               </a>
               <a 
