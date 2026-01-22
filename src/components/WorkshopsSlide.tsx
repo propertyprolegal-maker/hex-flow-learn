@@ -110,7 +110,7 @@ const WorkshopsSlide = () => {
             { value: "8000+", label: "Students Trained" },
             { value: "15+", label: "Workshops Conducted" },
             { value: "50+", label: "Partner Communities" },
-            { value: "95%", label: "Satisfaction Rate" }
+            { value: "98%", label: "Satisfaction Rate" }
           ].map((stat, index) => (
             <div 
               key={index}
