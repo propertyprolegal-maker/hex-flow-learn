@@ -28,7 +28,7 @@ const HeroSection = () => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-primary/30 animate-fade-in-up">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-medium text-primary">Property Pro Legal × Hastin Research</span>
+              <span className="text-sm font-medium text-primary">Hastin Research</span>
             </div>
 
             {/* Main Heading */}
