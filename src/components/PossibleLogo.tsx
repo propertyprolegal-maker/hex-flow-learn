@@ -36,7 +36,7 @@ const PossibleLogo = ({ className, showTagline = true, size = 'md' }: PossibleLo
             'font-medium tracking-[0.2em] uppercase text-muted-foreground mt-0.5 ml-1'
           )}
         >
-          Immersive Learning Platform
+          Shaping Minds from Creativity to Enterprise
         </span>
       )}
     </div>
