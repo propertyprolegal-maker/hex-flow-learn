@@ -44,7 +44,7 @@ const HeroSlide = ({ onExplore }: HeroSlideProps) => {
           {/* Stats - Projections */}
           <div className="pt-6 border-t border-border/30 animate-fade-in-up-delayed-2 max-w-md mx-auto">
             <div className="flex items-center gap-2 mb-3 justify-center">
-              <span className="text-xs font-medium text-muted-foreground/70 uppercase tracking-wider">Projected Impact</span>
+              <span className="text-xs font-medium text-muted-foreground/70 uppercase tracking-wider">Impact by Founding Team</span>
             </div>
             <div className="grid grid-cols-3 gap-6">
               <div className="text-center">
