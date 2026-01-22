@@ -69,7 +69,7 @@ const ContactSlide = () => {
                 <div className="text-xs text-muted-foreground">Response Time</div>
               </div>
               <div>
-                <div className="text-2xl font-heading font-bold text-secondary">1000+</div>
+                <div className="text-2xl font-heading font-bold text-secondary">8000+</div>
                 <div className="text-xs text-muted-foreground">Happy Students</div>
               </div>
               <div>
