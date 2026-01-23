@@ -1,9 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MapPin, Clock, Users, BookOpen, Calendar, CheckCircle, ArrowRight, ArrowLeft, ExternalLink, GraduationCap, Target, Award } from 'lucide-react';
+import { MapPin, Clock, Users, BookOpen, Calendar, CheckCircle, ArrowRight, ArrowLeft, GraduationCap, Target, Award, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import HeroBackground from '@/components/HeroBackground';
 import FloatingShapes from '@/components/FloatingShapes';
+import { EnrollmentModal } from '@/components/EnrollmentModal';
+import { useEnrollment } from '@/hooks/useEnrollment';
+import { useAuth } from '@/hooks/useAuth';
+import { supabase } from '@/integrations/supabase/client';
 
 // Import all course data
 import { schoolCourses, iconMap as schoolIconMap } from '@/data/schoolCourses';
@@ -24,9 +28,55 @@ const getAllCourses = () => {
 const CourseDetail = () => {
   const { courseId } = useParams<{ courseId: string }>();
   const navigate = useNavigate();
+  const { user, loading: authLoading } = useAuth();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [dbCourseId, setDbCourseId] = useState<string | null>(null);
 
   const allCourses = getAllCourses();
   const course = allCourses.find(c => c.id === courseId);
+
+  const { isEnrolled, isLoading: enrollmentLoading, isEnrolling, enrollInCourse } = useEnrollment(courseId || '');
+
+  // Fetch or create course in database
+  useEffect(() => {
+    const syncCourseToDb = async () => {
+      if (!course) return;
+
+      // Check if course exists in DB
+      const { data: existingCourse } = await supabase
+        .from('courses')
+        .select('id')
+        .eq('slug', course.id)
+        .maybeSingle();
+
+      if (existingCourse) {
+        setDbCourseId(existingCourse.id);
+      } else {
+        // Create course in DB (for enrollment tracking)
+        const fee = 'fee' in course ? course.fee : '₹0';
+        const price = parseFloat(fee.replace(/[₹,\s]/g, '')) || 0;
+
+        const { data: newCourse, error } = await supabase
+          .from('courses')
+          .insert({
+            slug: course.id,
+            title: course.title,
+            description: 'description' in course ? course.description : '',
+            price: price,
+            category: course.category,
+            is_published: true,
+          })
+          .select('id')
+          .single();
+
+        if (!error && newCourse) {
+          setDbCourseId(newCourse.id);
+        }
+      }
+    };
+
+    syncCourseToDb();
+  }, [course]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -71,12 +121,28 @@ const CourseDetail = () => {
 
   // Handle enrollment click
   const handleEnrollClick = () => {
-    if (course.registrationUrl) {
-      window.open(course.registrationUrl, '_blank');
-    } else {
-      // Show a message that registration will open soon
-      alert('Registration will open soon. Please check back later.');
+    if (!user) {
+      // Redirect to auth with return URL
+      navigate(`/auth?redirect=/course/${courseId}`);
+      return;
     }
+
+    if (isEnrolled) {
+      // Already enrolled, go to dashboard
+      navigate('/dashboard');
+      return;
+    }
+
+    // Open enrollment modal
+    setIsModalOpen(true);
+  };
+
+  // Handle enrollment
+  const handleEnroll = async (packageType: 'online' | 'immersion', fee: string) => {
+    if (!dbCourseId) {
+      return { success: false, error: 'Course not found in database' };
+    }
+    return enrollInCourse(dbCourseId, packageType, fee);
   };
 
   // Render modules based on course type
@@ -420,14 +486,29 @@ const CourseDetail = () => {
                   size="lg"
                   variant="glow"
                   onClick={handleEnrollClick}
+                  disabled={enrollmentLoading || authLoading}
                 >
-                  {course.registrationUrl ? 'Enroll Now' : 'Registration Opening Soon'}
-                  {course.registrationUrl ? <ExternalLink className="w-4 h-4 ml-2" /> : <ArrowRight className="w-4 h-4 ml-2" />}
+                  {enrollmentLoading || authLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Loading...
+                    </>
+                  ) : isEnrolled ? (
+                    <>
+                      <CheckCircle className="w-4 h-4 mr-2" />
+                      Continue Learning
+                    </>
+                  ) : (
+                    <>
+                      Enroll Now
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </>
+                  )}
                 </Button>
 
-                {!course.registrationUrl && (
-                  <p className="text-xs text-muted-foreground text-center mt-3">
-                    Registration links will be available soon
+                {isEnrolled && (
+                  <p className="text-xs text-primary text-center mt-3">
+                    You are enrolled in this course
                   </p>
                 )}
               </div>
@@ -449,6 +530,24 @@ const CourseDetail = () => {
             </div>
           </div>
         </div>
+
+        {/* Enrollment Modal */}
+        <EnrollmentModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          course={{
+            id: course.id,
+            title: course.title,
+            subtitle: course.subtitle,
+            fee: details.fee || '₹0',
+            duration: details.duration || '',
+            startDate: details.startDate || '',
+            hasImmersion: course.type === 'workshop',
+            immersionFee: course.type === 'workshop' ? (course as any).fee : undefined,
+          }}
+          onEnroll={handleEnroll}
+          isEnrolling={isEnrolling}
+        />
       </div>
     </div>
   );
