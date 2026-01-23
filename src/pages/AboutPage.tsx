@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import PossibleLogo from '@/components/PossibleLogo';
+import gauravPhoto from '@/assets/team-gaurav-jain.jpg';
 
 const teamMembers = [
   {
@@ -11,12 +12,14 @@ const teamMembers = [
     role: 'Co-Founder',
     linkedin: 'https://www.linkedin.com/in/gaurav-jain-20509718/',
     bio: 'Passionate about democratizing education and creating impactful learning experiences for students worldwide.',
+    photo: gauravPhoto,
   },
   {
     name: 'Sanjay Bafna',
     role: 'Co-Founder',
     linkedin: 'https://www.linkedin.com/in/sbsanjaybafna/',
     bio: 'Dedicated to building innovative educational platforms that bridge the gap between knowledge and real-world application.',
+    photo: null,
   },
 ];
 
@@ -149,12 +152,20 @@ const AboutPage = () => {
             {teamMembers.map((member) => (
               <Card key={member.name} className="border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden">
                 <CardContent className="pt-8 pb-6 text-center">
-                  {/* Avatar Placeholder */}
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl font-bold text-primary-foreground">
-                      {member.name.split(' ').map(n => n[0]).join('')}
-                    </span>
-                  </div>
+                  {/* Avatar */}
+                  {member.photo ? (
+                    <img 
+                      src={member.photo} 
+                      alt={member.name}
+                      className="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-2 border-primary/20"
+                    />
+                  ) : (
+                    <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center mx-auto mb-4">
+                      <span className="text-3xl font-bold text-primary-foreground">
+                        {member.name.split(' ').map(n => n[0]).join('')}
+                      </span>
+                    </div>
+                  )}
                   
                   <h3 className="text-xl font-heading font-semibold text-foreground mb-1">
                     {member.name}
