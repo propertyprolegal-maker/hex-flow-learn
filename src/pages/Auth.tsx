@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { z } from 'zod';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
@@ -28,6 +28,8 @@ const signupSchema = z.object({
 
 const Auth = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirectPath = searchParams.get('redirect') || '/dashboard';
   const { user, loading: authLoading, signIn, signUp } = useAuth();
   const { toast } = useToast();
   
@@ -48,9 +50,9 @@ const Auth = () => {
 
   useEffect(() => {
     if (user && !authLoading) {
-      navigate('/dashboard');
+      navigate(redirectPath);
     }
-  }, [user, authLoading, navigate]);
+  }, [user, authLoading, navigate, redirectPath]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
