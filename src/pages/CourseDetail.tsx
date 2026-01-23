@@ -101,22 +101,19 @@ const CourseDetail = () => {
 
   const IconComponent = getIconComponent();
 
+  // Temporary enrollment link - redirects to Google Form until payment is set up
+  const ENROLLMENT_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScfH_7_TTqPADqyuUHrjWIE0XeHOlSF81V95E9CK0i-xHoFsA/viewform?usp=header';
+
   // Handle enrollment click
   const handleEnrollClick = () => {
-    if (!user) {
-      // Redirect to auth with return URL
-      navigate(`/auth?redirect=/course/${courseId}`);
-      return;
-    }
-
     if (isEnrolled) {
       // Already enrolled, go to dashboard
       navigate('/dashboard');
       return;
     }
 
-    // Open enrollment modal
-    setIsModalOpen(true);
+    // Redirect to Google Form for enrollment
+    window.open(ENROLLMENT_FORM_URL, '_blank');
   };
 
   // Handle enrollment
