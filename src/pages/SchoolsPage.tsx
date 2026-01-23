@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, MapPin, Clock, ChevronDown } from 'lucide-react';
+import { ArrowLeft, ArrowRight, MapPin, Clock, ChevronDown, Play } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HeroBackground from '@/components/HeroBackground';
 import { schoolCourses } from '@/data/schoolCourses';
+
+// Import featured course banner
+import seeingProblemsBanner from '@/assets/course-seeing-problems-banner.png';
 
 const SchoolsPage = () => {
   const navigate = useNavigate();
@@ -240,9 +243,41 @@ const SchoolsPage = () => {
             )}
           </div>
 
+          {/* Featured Course Banner */}
+          {showCourses && (
+            <div className="mb-8">
+              <button
+                onClick={() => navigate('/course/seeing-problems-others-ignore')}
+                className="group relative w-full rounded-xl overflow-hidden border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+              >
+                <img 
+                  src={seeingProblemsBanner} 
+                  alt="Seeing Problems Others Ignore"
+                  className="w-full h-32 sm:h-40 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent flex items-center">
+                  <div className="p-4 sm:p-6">
+                    <span className="text-xs text-secondary font-medium mb-1 block">Featured Course</span>
+                    <h3 className="text-lg sm:text-xl font-heading font-bold text-foreground mb-1">
+                      Seeing Problems Others Ignore
+                    </h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-2">
+                      Training young minds to notice challenges hidden in everyday life.
+                    </p>
+                    <span className="inline-flex items-center gap-1 text-primary font-medium text-sm group-hover:gap-2 transition-all">
+                      <Play className="w-3 h-3" />
+                      Explore Course
+                      <ArrowRight className="w-3 h-3" />
+                    </span>
+                  </div>
+                </div>
+              </button>
+            </div>
+          )}
+
           {/* Courses Section */}
           {showCourses && (
-            <div id="school-courses" className="pt-8">
+            <div id="school-courses" className="pt-2">
               <div className="text-center mb-8">
                 <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-2">
                   <span className="gradient-text">School Programs</span>
