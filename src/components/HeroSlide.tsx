@@ -29,15 +29,11 @@ const HeroSlide = ({ onExplore }: HeroSlideProps) => {
             theory with real-world adventures. Your summit awaits.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up-delayed-2">
+          {/* CTA Button */}
+          <div className="flex justify-center animate-fade-in-up-delayed-2">
             <Button variant="hero" size="xl" className="group" onClick={onExplore}>
               Explore Courses
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="hero-outline" size="xl" className="group">
-              <Play className="w-5 h-5" />
-              Watch Story
             </Button>
           </div>
 
