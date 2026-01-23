@@ -16,7 +16,8 @@ import {
   Play,
   CheckCircle2,
   Loader2,
-  User
+  User,
+  Shield
 } from 'lucide-react';
 import HeroBackground from '@/components/HeroBackground';
 
@@ -49,6 +50,7 @@ const Dashboard = () => {
   const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -71,6 +73,16 @@ const Dashboard = () => {
         if (profileData) {
           setProfile(profileData);
         }
+
+        // Check if user is admin
+        const { data: roleData } = await supabase
+          .from('user_roles')
+          .select('role')
+          .eq('user_id', user.id)
+          .eq('role', 'admin')
+          .maybeSingle();
+
+        setIsAdmin(!!roleData);
 
         // Fetch enrollments with course details
         const { data: enrollmentsData } = await supabase
@@ -152,6 +164,14 @@ const Dashboard = () => {
                   {profile?.full_name || user?.email}
                 </span>
               </div>
+              {isAdmin && (
+                <Button variant="outline" size="sm" asChild>
+                  <Link to="/admin">
+                    <Shield className="h-4 w-4 mr-2" />
+                    Admin
+                  </Link>
+                </Button>
+              )}
               <Button variant="outline" size="sm" onClick={handleSignOut}>
                 <LogOut className="h-4 w-4 mr-2" />
                 Sign Out
