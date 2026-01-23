@@ -34,7 +34,7 @@ const Footer = () => {
       { label: 'Become an Instructor', href: 'https://docs.google.com/forms/d/e/1FAIpQLSdSdhKaB4omA_gKxb_dWpC6u2XAVxjXQzw5EnnCSe7mahLyoQ/viewform?usp=publish-editor', external: true },
     ],
     company: [
-      { label: 'About Us', href: '#' },
+      { label: 'About Us', href: '/about', internal: true },
       { label: 'Careers', href: '/careers', internal: true },
       { label: 'Community', href: 'https://chat.whatsapp.com/BqPGQmQ4ncvLJGGBaYYQ3B', external: true },
     ],
