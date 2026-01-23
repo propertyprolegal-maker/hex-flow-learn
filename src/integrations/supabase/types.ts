@@ -48,6 +48,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "certificates_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "enrollment_stats"
+            referencedColumns: ["course_id"]
+          },
+          {
             foreignKeyName: "certificates_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
@@ -237,6 +244,13 @@ export type Database = {
             referencedRelation: "courses"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "discussion_topics_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "enrollment_stats"
+            referencedColumns: ["course_id"]
+          },
         ]
       }
       enrollments: {
@@ -283,6 +297,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "courses"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "enrollments_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "enrollment_stats"
+            referencedColumns: ["course_id"]
           },
           {
             foreignKeyName: "enrollments_user_id_fkey"
@@ -431,6 +452,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "courses"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "modules_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "enrollment_stats"
+            referencedColumns: ["course_id"]
           },
         ]
       }
@@ -627,6 +655,20 @@ export type Database = {
       }
     }
     Views: {
+      enrollment_stats: {
+        Row: {
+          active_enrollments: number | null
+          category: string | null
+          completed_enrollments: number | null
+          course_id: string | null
+          course_title: string | null
+          paid_enrollments: number | null
+          price: number | null
+          total_enrollments: number | null
+          total_revenue: number | null
+        }
+        Relationships: []
+      }
       enrollments_instructor: {
         Row: {
           completed_at: string | null
@@ -644,6 +686,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "courses"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "enrollments_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "enrollment_stats"
+            referencedColumns: ["course_id"]
           },
           {
             foreignKeyName: "enrollments_user_id_fkey"
