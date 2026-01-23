@@ -12,6 +12,10 @@ import AudioIntroPlayer from '@/components/AudioIntroPlayer';
 
 // Import audio for specific courses
 import thinkingBeyondAnswersAudio from '@/assets/course-intro-thinking-beyond-answers.wav';
+import seeingProblemsAudio from '@/assets/course-intro-seeing-problems.wav';
+
+// Import course banners
+import seeingProblemsBanner from '@/assets/course-seeing-problems-banner.png';
 
 // Import all course data
 import { schoolCourses, iconMap as schoolIconMap } from '@/data/schoolCourses';
@@ -376,11 +380,31 @@ const CourseDetail = () => {
               </div>
             )}
 
+            {/* Course Banner for specific courses */}
+            {course.id === 'seeing-problems-others-ignore' && (
+              <div className="mb-6 rounded-xl overflow-hidden">
+                <img 
+                  src={seeingProblemsBanner} 
+                  alt="Seeing Problems Others Ignore - Course Banner"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            )}
+
             {/* Audio Introduction for specific courses */}
             {course.id === 'thinking-beyond-answers' && (
               <div className="mb-6">
                 <AudioIntroPlayer 
                   audioSrc={thinkingBeyondAnswersAudio} 
+                  title="Introduction to the course"
+                />
+              </div>
+            )}
+            
+            {course.id === 'seeing-problems-others-ignore' && (
+              <div className="mb-6">
+                <AudioIntroPlayer 
+                  audioSrc={seeingProblemsAudio} 
                   title="Introduction to the course"
                 />
               </div>
