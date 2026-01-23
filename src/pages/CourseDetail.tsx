@@ -8,6 +8,10 @@ import { EnrollmentModal } from '@/components/EnrollmentModal';
 import { useEnrollment } from '@/hooks/useEnrollment';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
+import AudioIntroPlayer from '@/components/AudioIntroPlayer';
+
+// Import audio for specific courses
+import thinkingBeyondAnswersAudio from '@/assets/course-intro-thinking-beyond-answers.wav';
 
 // Import all course data
 import { schoolCourses, iconMap as schoolIconMap } from '@/data/schoolCourses';
@@ -369,9 +373,19 @@ const CourseDetail = () => {
 
             {/* Core Shift (for school courses) */}
             {(details as any).coreShift && (
-              <div className="p-4 rounded-lg bg-secondary/10 border border-secondary/20 mb-6">
+              <div className="p-4 rounded-lg bg-secondary/10 border border-secondary/20 mb-4">
                 <p className="text-sm font-medium text-secondary">Core Shift:</p>
                 <p className="text-foreground">{(details as any).coreShift}</p>
+              </div>
+            )}
+
+            {/* Audio Introduction for specific courses */}
+            {course.id === 'thinking-beyond-answers' && (
+              <div className="mb-6">
+                <AudioIntroPlayer 
+                  audioSrc={thinkingBeyondAnswersAudio} 
+                  title="Introduction to the course"
+                />
               </div>
             )}
 
