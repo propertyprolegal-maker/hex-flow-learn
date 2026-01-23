@@ -9,6 +9,7 @@ import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import CourseDetail from "./pages/CourseDetail";
+import MyCourse from "./pages/MyCourse";
 import CategoryCourses from "./pages/CategoryCourses";
 import SchoolsPage from "./pages/SchoolsPage";
 import UniversitiesPage from "./pages/UniversitiesPage";
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/about" element={<AboutPage />} />
             <Route path="/courses/:category" element={<CategoryCourses />} />
             <Route path="/course/:courseId" element={<CourseDetail />} />
+            <Route path="/my-course/:courseId" element={<MyCourse />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

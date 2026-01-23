@@ -37,12 +37,11 @@ const CourseDetail = () => {
 
   const { isEnrolled, isLoading: enrollmentLoading, isEnrolling, enrollInCourse } = useEnrollment(courseId || '');
 
-  // Fetch or create course in database
+  // Fetch course from database (courses are pre-seeded)
   useEffect(() => {
-    const syncCourseToDb = async () => {
+    const fetchCourseFromDb = async () => {
       if (!course) return;
 
-      // Check if course exists in DB
       const { data: existingCourse } = await supabase
         .from('courses')
         .select('id')
@@ -51,31 +50,10 @@ const CourseDetail = () => {
 
       if (existingCourse) {
         setDbCourseId(existingCourse.id);
-      } else {
-        // Create course in DB (for enrollment tracking)
-        const fee = 'fee' in course ? course.fee : '₹0';
-        const price = parseFloat(fee.replace(/[₹,\s]/g, '')) || 0;
-
-        const { data: newCourse, error } = await supabase
-          .from('courses')
-          .insert({
-            slug: course.id,
-            title: course.title,
-            description: 'description' in course ? course.description : '',
-            price: price,
-            category: course.category,
-            is_published: true,
-          })
-          .select('id')
-          .single();
-
-        if (!error && newCourse) {
-          setDbCourseId(newCourse.id);
-        }
       }
     };
 
-    syncCourseToDb();
+    fetchCourseFromDb();
   }, [course]);
 
   useEffect(() => {
