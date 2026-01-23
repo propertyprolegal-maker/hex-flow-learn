@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import PossibleLogo from '@/components/PossibleLogo';
 import gauravPhoto from '@/assets/team-gaurav-jain.jpg';
+import sanjayPhoto from '@/assets/team-sanjay-bafna.jpg';
 
 const teamMembers = [
   {
@@ -19,7 +20,7 @@ const teamMembers = [
     role: 'Co-Founder',
     linkedin: 'https://www.linkedin.com/in/sbsanjaybafna/',
     bio: 'Dedicated to building innovative educational platforms that bridge the gap between knowledge and real-world application.',
-    photo: null,
+    photo: sanjayPhoto,
   },
 ];
 
