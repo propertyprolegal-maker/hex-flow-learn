@@ -13,6 +13,7 @@ import SchoolsPage from "./pages/SchoolsPage";
 import UniversitiesPage from "./pages/UniversitiesPage";
 import AnchorCoursesPage from "./pages/AnchorCoursesPage";
 import WorkshopsPage from "./pages/WorkshopsPage";
+import CareersPage from "./pages/CareersPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/courses/universities" element={<UniversitiesPage />} />
             <Route path="/courses/anchor-courses" element={<AnchorCoursesPage />} />
             <Route path="/courses/workshops" element={<WorkshopsPage />} />
+            <Route path="/careers" element={<CareersPage />} />
             <Route path="/courses/:category" element={<CategoryCourses />} />
             <Route path="/course/:courseId" element={<CourseDetail />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Send, Instagram, Linkedin, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -29,36 +30,22 @@ const Footer = () => {
   const footerLinks = {
     platform: [
       { label: 'Browse Courses', href: '#courses' },
-      { label: 'For Business', href: '#' },
-      { label: 'Become an Instructor', href: '#' },
-      { label: 'Mobile App', href: '#' },
+      { label: 'For Business', href: 'https://topmate.io/possibleeducation/1798552', external: true },
+      { label: 'Become an Instructor', href: 'https://docs.google.com/forms/d/e/1FAIpQLSdSdhKaB4omA_gKxb_dWpC6u2XAVxjXQzw5EnnCSe7mahLyoQ/viewform?usp=publish-editor', external: true },
     ],
     company: [
       { label: 'About Us', href: '#' },
-      { label: 'Careers', href: '#' },
-      { label: 'Press', href: '#' },
-      { label: 'Blog', href: '#' },
-    ],
-    resources: [
-      { label: 'Help Center', href: '#' },
-      { label: 'Community', href: '#' },
-      { label: 'Webinars', href: '#' },
-      { label: 'Research', href: '#' },
-    ],
-    legal: [
-      { label: 'Terms of Service', href: '#' },
-      { label: 'Privacy Policy', href: '#' },
-      { label: 'Cookie Policy', href: '#' },
-      { label: 'Accessibility', href: '#' },
+      { label: 'Careers', href: '/careers', internal: true },
+      { label: 'Community', href: 'https://chat.whatsapp.com/BqPGQmQ4ncvLJGGBaYYQ3B', external: true },
     ],
   };
 
   return (
     <footer className="relative py-16 px-4 border-t border-border/30 bg-background/50">
       <div className="container mx-auto max-w-7xl">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 mb-12">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-3 lg:col-span-2">
+          <div className="col-span-2">
             <a href="#" className="inline-block mb-4">
               <PossibleLogo size="lg" showTagline={true} />
             </a>
@@ -120,9 +107,20 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.platform.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {link.label}
-                  </a>
+                  {link.external ? (
+                    <a 
+                      href={link.href} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -134,42 +132,33 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Resources Links */}
-          <div>
-            <h4 className="font-heading font-semibold text-foreground mb-4">Resources</h4>
-            <ul className="space-y-2">
-              {footerLinks.resources.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal Links */}
-          <div>
-            <h4 className="font-heading font-semibold text-foreground mb-4">Legal</h4>
-            <ul className="space-y-2">
-              {footerLinks.legal.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {link.label}
-                  </a>
+                  {'internal' in link && link.internal ? (
+                    <Link 
+                      to={link.href} 
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : 'external' in link && link.external ? (
+                    <a 
+                      href={link.href} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
           </div>
         </div>
+
 
         {/* Newsletter Section */}
         <div className="py-8 mb-8 border-y border-border/30">
