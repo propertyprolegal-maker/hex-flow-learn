@@ -264,51 +264,57 @@ const Dashboard = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {activeEnrollments.slice(0, 3).map((enrollment) => (
-                  <Card key={enrollment.id} className="glass-card border-0 overflow-hidden group hover:shadow-xl transition-shadow">
-                    <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 relative">
-                      {enrollment.course.thumbnail_url ? (
-                        <img 
-                          src={enrollment.course.thumbnail_url} 
-                          alt={enrollment.course.title}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                          <BookOpen className="h-12 w-12 text-primary/40" />
+                  <Link 
+                    key={enrollment.id} 
+                    to={`/my-course/${enrollment.course.slug}`}
+                    className="block"
+                  >
+                    <Card className="glass-card border-0 overflow-hidden group hover:shadow-xl transition-shadow h-full">
+                      <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 relative">
+                        {enrollment.course.thumbnail_url ? (
+                          <img 
+                            src={enrollment.course.thumbnail_url} 
+                            alt={enrollment.course.title}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <BookOpen className="h-12 w-12 text-primary/40" />
+                          </div>
+                        )}
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                          <Button size="sm" className="gap-2">
+                            <Play className="h-4 w-4" /> View Course
+                          </Button>
                         </div>
-                      )}
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <Button size="sm" className="gap-2">
-                          <Play className="h-4 w-4" /> Continue
-                        </Button>
                       </div>
-                    </div>
-                    <CardHeader className="pb-2">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge variant="secondary" className="text-xs">
-                          {enrollment.course.category || 'Course'}
-                        </Badge>
-                        <Badge variant="outline" className="text-xs">
-                          {enrollment.package_type === 'immersion' ? 'Immersion' : 'Online'}
-                        </Badge>
-                      </div>
-                      <CardTitle className="text-lg line-clamp-1">
-                        {enrollment.course.title}
-                      </CardTitle>
-                      <CardDescription className="line-clamp-2">
-                        {enrollment.course.description}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between text-sm">
-                          <span className="text-muted-foreground">Progress</span>
-                          <span className="font-medium">0%</span>
+                      <CardHeader className="pb-2">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Badge variant="secondary" className="text-xs">
+                            {enrollment.course.category || 'Course'}
+                          </Badge>
+                          <Badge variant="outline" className="text-xs">
+                            {enrollment.package_type === 'immersion' ? 'Immersion' : 'Online'}
+                          </Badge>
                         </div>
-                        <Progress value={0} className="h-2" />
-                      </div>
-                    </CardContent>
-                  </Card>
+                        <CardTitle className="text-lg line-clamp-1">
+                          {enrollment.course.title}
+                        </CardTitle>
+                        <CardDescription className="line-clamp-2">
+                          {enrollment.course.description}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-muted-foreground">Progress</span>
+                            <span className="font-medium">0%</span>
+                          </div>
+                          <Progress value={0} className="h-2" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 ))}
               </div>
             </section>
