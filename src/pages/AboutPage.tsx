@@ -193,7 +193,7 @@ const AboutPage = () => {
                 <Link to="/#courses">Explore Courses</Link>
               </Button>
               <Button variant="outline" asChild size="lg">
-                <Link to="/#contact">Contact Us</Link>
+                <a href="https://topmate.io/possibleeducation/1798552" target="_blank" rel="noopener noreferrer">Contact Us</a>
               </Button>
             </div>
           </CardContent>

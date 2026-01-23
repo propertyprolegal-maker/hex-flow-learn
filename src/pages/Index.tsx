@@ -47,7 +47,7 @@ const Index = () => {
         </section>
         
         <section id="benefits" className="py-8 lg:py-10">
-          <BenefitsSlide onContact={() => scrollToSection('contact')} />
+          <BenefitsSlide />
         </section>
         
         <section id="contact" className="py-8 lg:py-10">

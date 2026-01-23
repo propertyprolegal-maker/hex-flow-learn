@@ -2,11 +2,7 @@ import { GraduationCap, Briefcase, Users, Lightbulb, Globe, Heart } from 'lucide
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
 
-interface BenefitsSlideProps {
-  onContact: () => void;
-}
-
-const BenefitsSlide = ({ onContact }: BenefitsSlideProps) => {
+const BenefitsSlide = () => {
   const benefits = [
     {
       icon: GraduationCap,
@@ -90,9 +86,11 @@ const BenefitsSlide = ({ onContact }: BenefitsSlideProps) => {
 
         {/* CTA */}
         <div className="text-center mt-8">
-          <Button variant="hero" size="lg" className="group" onClick={onContact}>
-            Start Your Journey
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          <Button variant="hero" size="lg" className="group" asChild>
+            <a href="https://topmate.io/possibleeducation/1798552" target="_blank" rel="noopener noreferrer">
+              Start Your Journey
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
           </Button>
         </div>
       </div>

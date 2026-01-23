@@ -441,9 +441,9 @@ const CourseDetail = () => {
                 <Button 
                   variant="outline" 
                   className="w-full"
-                  onClick={() => navigate('/#contact')}
+                  asChild
                 >
-                  Contact Us
+                  <a href="https://topmate.io/possibleeducation/1798552" target="_blank" rel="noopener noreferrer">Contact Us</a>
                 </Button>
               </div>
             </div>
