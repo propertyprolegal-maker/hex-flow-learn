@@ -1,7 +1,9 @@
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, Calendar, Clock, ExternalLink } from 'lucide-react';
 import { Button } from './ui/button';
 import HexagonNav from './HexagonNav';
 import heroVisual from '@/assets/hero-visual.jpg';
+
+const IP_COURSE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSej9Wz1X7nM8vFrcLI8HnwgL3XXeeHHikXQC2LDdm0ZmFU_yQ/viewform?usp=header';
 
 const HeroSection = () => {
   const hexNavItems = [
@@ -21,6 +23,30 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 pb-12 px-4 overflow-hidden">
+      {/* Floating Course Promo Banner */}
+      <a
+        href={IP_COURSE_FORM_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed top-20 left-1/2 -translate-x-1/2 z-40 group animate-fade-in-up"
+      >
+        <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-secondary/20 to-primary/20 border border-primary/40 backdrop-blur-md hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+          <span className="flex items-center gap-1 text-xs font-medium text-secondary">
+            <Calendar className="w-3 h-3" />
+            Feb 6th
+          </span>
+          <span className="text-sm font-semibold text-foreground">IP Protection for Startups</span>
+          <span className="flex items-center gap-1 text-xs text-muted-foreground">
+            <Clock className="w-3 h-3" />
+            7-8 PM IST
+          </span>
+          <span className="flex items-center gap-1 text-xs font-medium text-primary group-hover:gap-2 transition-all">
+            Register
+            <ExternalLink className="w-3 h-3" />
+          </span>
+        </div>
+      </a>
+
       <div className="container mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Content */}
