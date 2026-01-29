@@ -17,6 +17,7 @@ import AnchorCoursesPage from "./pages/AnchorCoursesPage";
 import WorkshopsPage from "./pages/WorkshopsPage";
 import CareersPage from "./pages/CareersPage";
 import AboutPage from "./pages/AboutPage";
+import IPProtectionWebinar from "./pages/IPProtectionWebinar";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +40,7 @@ const App = () => (
             <Route path="/courses/workshops" element={<WorkshopsPage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/webinar/ip-protection-startups" element={<IPProtectionWebinar />} />
             <Route path="/courses/:category" element={<CategoryCourses />} />
             <Route path="/course/:courseId" element={<CourseDetail />} />
             <Route path="/my-course/:courseId" element={<MyCourse />} />
