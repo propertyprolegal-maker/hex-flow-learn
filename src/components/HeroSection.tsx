@@ -28,22 +28,31 @@ const HeroSection = () => {
         href={IP_COURSE_FORM_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed top-20 left-1/2 -translate-x-1/2 z-40 group animate-fade-in-up"
+        className="fixed top-20 left-1/2 -translate-x-1/2 z-40 group animate-fade-in"
       >
-        <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-secondary/20 to-primary/20 border border-primary/40 backdrop-blur-md hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
-          <span className="flex items-center gap-1 text-xs font-medium text-secondary">
-            <Calendar className="w-3 h-3" />
-            Feb 6th
-          </span>
-          <span className="text-sm font-semibold text-foreground">IP Protection for Startups</span>
-          <span className="flex items-center gap-1 text-xs text-muted-foreground">
-            <Clock className="w-3 h-3" />
-            7-8 PM IST
-          </span>
-          <span className="flex items-center gap-1 text-xs font-medium text-primary group-hover:gap-2 transition-all">
-            Register
-            <ExternalLink className="w-3 h-3" />
-          </span>
+        <div className="relative flex items-center gap-4 px-6 py-3 rounded-2xl bg-gradient-to-r from-primary/30 via-secondary/20 to-primary/30 border-2 border-primary/60 backdrop-blur-md hover:border-primary hover:scale-105 transition-all duration-300 shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_50px_hsl(var(--primary)/0.6)]">
+          {/* Animated glow effect */}
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/20 via-secondary/30 to-primary/20 animate-pulse opacity-60" />
+          
+          <div className="relative flex items-center gap-4">
+            <span className="flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/30 text-sm font-bold text-secondary">
+              <Calendar className="w-4 h-4" />
+              Feb 6th
+            </span>
+            <div className="flex flex-col">
+              <span className="text-base sm:text-lg font-heading font-bold text-foreground">
+                IP Protection for Startups
+              </span>
+              <span className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+                <Clock className="w-3 h-3" />
+                7:00 PM - 8:00 PM IST • 1 Hour Webinar
+              </span>
+            </div>
+            <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground font-semibold text-sm group-hover:bg-primary/90 transition-colors shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
+              Register Free
+              <ExternalLink className="w-4 h-4" />
+            </span>
+          </div>
         </div>
       </a>
 
